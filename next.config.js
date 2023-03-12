@@ -1,16 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   compress: true,
-  async rewrites() {
-    return [
-      {
-        source: "/",
-        destination: "/main",
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
