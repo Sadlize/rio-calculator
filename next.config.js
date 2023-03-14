@@ -6,11 +6,14 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compress: true,
-  i18n: {
-    locales: ["en", "ru"],
-    defaultLocale: "en",
-    localeDetection: true,
-  }
-}
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/en",
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

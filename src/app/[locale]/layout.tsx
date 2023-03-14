@@ -1,19 +1,21 @@
-import {Metadata} from "next";
+import { Metadata } from "next";
 import "./globals.css";
 import React from "react";
-import { getDictionary } from "./dictionaries";
-import {locales, siteName, siteUrl} from "../../utils/projectSettings";
+import { getDictionary } from "../../utils/dictionaries";
+import { siteName, siteUrl } from "../../utils/projectSettings";
+import { Locale, i18n } from "@/i18n-config";
 
-export async function generateMetadata({params}: TParams): Promise<Metadata> {
+export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   const { locale } = params;
   const dict = await getDictionary(locale);
 
-  const ogAltLocales = locales.filter(item => {
-    return item !== locale
+  const ogAltLocales = i18n.locales.filter(item => {
+    return item !== locale;
   });
   const canonicalAltLocales = ogAltLocales.reduce(
-    (object, locale) => ({ ...object, [locale]: `${siteUrl}/${locale}`}), {}
-  )
+    (object, locale) => ({ ...object, [locale]: `${siteUrl}/${locale}` }),
+    {}
+  );
 
   return {
     title: dict.SEO.title,
@@ -25,15 +27,15 @@ export async function generateMetadata({params}: TParams): Promise<Metadata> {
       icon: [
         {
           url: "/favicon/favicon.ico",
-          sizes: "any"
+          sizes: "any",
         },
         {
           url: "/favicon/favicon-16x16.png",
-          sizes: "16x16"
+          sizes: "16x16",
         },
         {
           url: "/favicon/favicon-32x32.png",
-          sizes: "32x32"
+          sizes: "32x32",
         },
       ],
       apple: [
@@ -59,7 +61,7 @@ export async function generateMetadata({params}: TParams): Promise<Metadata> {
       // ],
       locale: locale,
       alternateLocale: ogAltLocales,
-      type: 'website',
+      type: "website",
     },
     twitter: {
       card: "summary",
@@ -78,20 +80,14 @@ export async function generateMetadata({params}: TParams): Promise<Metadata> {
     other: {
       url: siteUrl,
     },
-  }
+  };
 }
 
 export async function generateStaticParams() {
-  const localesList: object[] = [];
-  (locales || []).forEach(locale => {
-    localesList.push({
-      locale: locale
-    });
-  });
-  return localesList;
+  return i18n.locales.map(locale => ({ locale: locale }));
 }
 
-export const dynamicParams = false
+export const dynamicParams = false;
 export default function RootLayout({ children, params }: IProps) {
   return (
     <html lang={params.locale}>
@@ -101,9 +97,9 @@ export default function RootLayout({ children, params }: IProps) {
 }
 
 interface IProps extends TParams {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export type TParams = {
-  params: { locale: string, }
-}
+  params: { locale: Locale };
+};
