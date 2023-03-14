@@ -6,6 +6,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compress: true,
+  i18n: {
+    locales: ["en", "ru"],
+    defaultLocale: "en",
+    localeDetection: true,
+  }
 }
 
 module.exports = nextConfig
