@@ -20,9 +20,14 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "components/*": ["./src/components/*"],
+      "modules/*": ["./src/modules/*"],
+      "context/*": ["./src/context/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "utils/*": ["./src/utils/*"],
+      "requests/*": ["./src/requests/*"],
+      "styles/*": ["./src/styles/*"],
+      "@/*": ["./*"]
     },
     "plugins": [
       {

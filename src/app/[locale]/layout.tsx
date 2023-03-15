@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import "./globals.css";
+import "styles/globals.css";
 import React from "react";
-import { getDictionary } from "../../utils/dictionaries";
+import { getDictionary } from "utils/dictionaries";
 import { Locale, i18n, siteName, siteUrl } from "@/projectSettings";
 
 export async function generateMetadata({ params }: TParams): Promise<Metadata> {
