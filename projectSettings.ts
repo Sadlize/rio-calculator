@@ -1,4 +1,4 @@
-export const siteName = "RIO Calculator";
+export const siteName = "RIO Index";
 export const siteUrl = "localhost:3000";
 
 export const i18n = {

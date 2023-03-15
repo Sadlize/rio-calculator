@@ -1,0 +1,7 @@
+@import "variables.css";
+
+.base {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: color_Black;
+}

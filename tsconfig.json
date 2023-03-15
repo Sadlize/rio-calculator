@@ -26,7 +26,6 @@
       "hooks/*": ["./src/hooks/*"],
       "utils/*": ["./src/utils/*"],
       "requests/*": ["./src/requests/*"],
-      "styles/*": ["./src/styles/*"],
       "@/*": ["./*"]
     },
     "plugins": [
