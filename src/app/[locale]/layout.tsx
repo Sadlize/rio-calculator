@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import "./globals.css";
 import React from "react";
 import { getDictionary } from "../../utils/dictionaries";
-import { siteName, siteUrl } from "../../utils/projectSettings";
-import { Locale, i18n } from "@/i18n-config";
+import { Locale, i18n, siteName, siteUrl } from "@/projectSettings";
 
 export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   const { locale } = params;
