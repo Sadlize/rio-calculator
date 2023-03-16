@@ -4,5 +4,15 @@
     "description": "Count your RIO",
     "keywords": ["RIO"],
     "image": ""
+  },
+  "Dungeons": {
+    "algethar_academy": "Algeth'ar Academy",
+    "temple_of_the_jade_serpent": "Temple of the Jade Serpent",
+    "shadowmoon_burial_grounds": "Shadowmoon Burial Grounds",
+    "the_nokhud_offensive": "The Nokhud Offensive",
+    "court_of_stars": "Court of Stars",
+    "ruby_life_pools": "Ruby Life Pools",
+    "the_azure_vault": "The Azure Vault",
+    "halls_of_valor": "Halls of Valor"
   }
 }

@@ -4,5 +4,15 @@
     "description": "Посчитай свое РИО",
     "keywords": ["РИО"],
     "image": ""
+  },
+  "Dungeons": {
+    "algethar_academy": "Академия Алгетар",
+    "temple_of_the_jade_serpent": "Храм Нефритовой Змеи",
+    "shadowmoon_burial_grounds": "Некрополь Призрачной Луны",
+    "the_nokhud_offensive": "Наступление клана Нокхуд",
+    "court_of_stars": "Квартал Звезд",
+    "ruby_life_pools": "Рубиновые Омуты Жизни",
+    "the_azure_vault": "Лазурное хранилище",
+    "halls_of_valor": "Чертоги Доблести"
   }
 }

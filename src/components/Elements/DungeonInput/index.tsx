@@ -2,13 +2,12 @@
 
 import styles from "./DungeonInput.module.css";
 import { useState } from "react";
-import Image from "next/image";
-import { DungeonImage } from "components/Modules/Calculator";
+import Image, { TDungeonImage } from "components/Elements/Image";
 
 type TProps = {
   dungeonName: string;
-  img_frontal: DungeonImage;
-  img_background: DungeonImage;
+  img_frontal: TDungeonImage;
+  img_background: TDungeonImage;
 };
 
 const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
@@ -39,12 +38,16 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
           {/*<img alt="" src="images/affixes/fortified.jpg" />*/}
         </div>
         <div className={styles.image}>
-          <Image alt="" src={img_frontal} width={2000} height={1000} />
+          <Image alt={img_frontal.alt} src={img_frontal.src} layout={"cover"} />
         </div>
       </div>
       <h2>{dungeonName}</h2>
       <div className={styles.background}>
-        <Image alt="" src={img_background} width={2000} height={1000} />
+        <Image
+          alt={img_background.alt}
+          src={img_background.src}
+          layout={"cover"}
+        />
       </div>
     </div>
   );

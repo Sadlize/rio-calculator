@@ -4,10 +4,12 @@ import Calculator from "components/Modules/Calculator";
 
 const Home = ({ params }: TParams) => {
   const { locale } = params;
+
   return (
     <main className={styles.main}>
       {locale}
-      <Calculator />
+      {/* @ts-expect-error Server Component */}
+      <Calculator locale={locale} />
     </main>
   );
 };

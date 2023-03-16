@@ -1,98 +1,136 @@
 import styles from "./Calculator.module.css";
 import DungeonInput from "components/Elements/DungeonInput";
+import { TDungeonImage } from "components/Elements/Image";
+import { getDictionary } from "utils/dictionaries";
+import { Locale } from "@/projectSettings";
 
 export type Dungeon = {
   id: number;
   name: string;
-  img_frontal: DungeonImage;
-  img_background: DungeonImage;
+  img_frontal: TDungeonImage;
+  img_background: TDungeonImage;
   icon?: string;
 };
 
-export type DungeonImage = {
-  src: string;
-  width: number;
-  height: number;
-  alt: string;
-};
+const Calculator = async ({ locale }: { locale: Locale }) => {
+  const dict = await getDictionary(locale);
 
-const Calculator = () => {
   const dungeons: Array<Dungeon> = [
     {
       id: 0,
-      name: "Algeth'ar Academy",
+      name: dict.Dungeons.algethar_academy,
       img_frontal: {
         src: "/images/dungeons/frontals/algethar-academy.jpg",
-        width: 1800,
-        height: 692,
-        alt: "",
+        // width: 1800,
+        // height: 692,
+        alt: dict.Dungeons.algethar_academy,
       },
       img_background: {
         src: "/images/dungeons/backgrounds/algethar-academy.jpg",
-        width: 1280,
-        height: 720,
-        alt: "",
+        // width: 1280,
+        // height: 720,
+        alt: dict.Dungeons.algethar_academy,
       },
       icon: "",
     },
-    // {
-    //   id: 1,
-    //   name: "Temple of the Jade Serpent",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion4/base/temple-of-the-jade-serpent.jpg",
-    //   img_background:
-    //     "https://wow.zamimg.com/uploads/guide/header/18760.jpg?1670808293&maxWidth=1630",
-    // },
-    // {
-    //   id: 2,
-    //   name: "Shadowmoon Burial Grounds",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion5/base/shadowmoon-burial-grounds.jpg",
-    //   img_background:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion5/base/shadowmoon-burial-grounds.jpg",
-    //   icon: "images/dungeons/icons/shadowmoon-burial-grounds.jpg",
-    // },
-    // {
-    //   id: 3,
-    //   name: "The Nokhud Offensive",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion9/base/the-nokhud-offensive.jpg",
-    //   img_background:
-    //     "https://wow.zamimg.com/uploads/guide/header/16467.jpg?1658149617&maxWidth=1630",
-    //   icon: "images/dungeons/icons/shadowmoon-burial-grounds.jpg",
-    // },
-    // {
-    //   id: 4,
-    //   name: "Court of Stars",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion6/base/court-of-stars.jpg",
-    //   img_background:
-    //     "https://wow.zamimg.com/uploads/guide/header/18759.jpg?1670797583&maxWidth=1630",
-    // },
-    // {
-    //   id: 5,
-    //   name: "Ruby Life Pools",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion9/base/ruby-life-pools.jpg",
-    //   img_background:
-    //     "https://wow.zamimg.com/uploads/guide/header/17811.jpg?1669415775&maxWidth=1630",
-    // },
-    // {
-    //   id: 6,
-    //   name: "The Azure Vault",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion9/base/the-azure-vault.jpg",
-    //   img_background:
-    //     "https://wow.zamimg.com/uploads/guide/header/17808.jpg?1669416036&maxWidth=1630",
-    // },
-    // {
-    //   id: 7,
-    //   name: "Halls of Valor",
-    //   img_frontal:
-    //     "https://cdnassets.raider.io/images/dungeons/expansion6/base/halls-of-valor.jpg",
-    //   img_background:
-    //     "https://wow.zamimg.com/uploads/guide/header/18657.jpg?1670809010&maxWidth=1630",
-    // },
+    {
+      id: 1,
+      name: dict.Dungeons.temple_of_the_jade_serpent,
+      img_frontal: {
+        src: "/images/dungeons/frontals/temple-of-the-jade-serpent.jpg",
+        // width: 1365,
+        // height: 563,
+        alt: dict.Dungeons.temple_of_the_jade_serpent,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/temple-of-the-jade-serpent.jpg",
+        // width: 1630,
+        // height: 917,
+        alt: dict.Dungeons.temple_of_the_jade_serpent,
+      },
+    },
+    {
+      id: 2,
+      name: dict.Dungeons.shadowmoon_burial_grounds,
+      img_frontal: {
+        src: "/images/dungeons/backgrounds/shadowmoon-burial-grounds.jpg",
+        // width: 1365,
+        // height: 563,
+        alt: dict.Dungeons.shadowmoon_burial_grounds,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/shadowmoon-burial-grounds.jpg",
+        // width: 1365,
+        // height: 563,
+        alt: dict.Dungeons.shadowmoon_burial_grounds,
+      },
+      icon: "images/dungeons/icons/shadowmoon-burial-grounds.jpg",
+    },
+    {
+      id: 3,
+      name: dict.Dungeons.the_nokhud_offensive,
+      img_frontal: {
+        src: "/images/dungeons/frontals/the-nokhud-offensive.jpg",
+        // width: 1800,
+        // height: 692,
+        alt: dict.Dungeons.the_nokhud_offensive,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/the-nokhud-offensive.jpg",
+        // width: 1280,
+        // height: 720,
+        alt: dict.Dungeons.the_nokhud_offensive,
+      },
+      icon: "images/dungeons/icons/shadowmoon-burial-grounds.jpg",
+    },
+    {
+      id: 4,
+      name: dict.Dungeons.court_of_stars,
+      img_frontal: {
+        src: "/images/dungeons/frontals/court-of-stars.jpg",
+        alt: dict.Dungeons.court_of_stars,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/court-of-stars.jpg",
+        alt: dict.Dungeons.court_of_stars,
+      },
+    },
+    {
+      id: 5,
+      name: dict.Dungeons.ruby_life_pools,
+      img_frontal: {
+        src: "/images/dungeons/frontals/ruby-life-pools.jpg",
+        alt: dict.Dungeons.ruby_life_pools,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/ruby-life-pools.jpg",
+        alt: dict.Dungeons.ruby_life_pools,
+      },
+    },
+    {
+      id: 6,
+      name: dict.Dungeons.the_azure_vault,
+      img_frontal: {
+        src: "/images/dungeons/frontals/the-azure-vault.jpg",
+        alt: dict.Dungeons.the_azure_vault,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/the-azure-vault.jpg",
+        alt: dict.Dungeons.the_azure_vault,
+      },
+    },
+    {
+      id: 7,
+      name: dict.Dungeons.halls_of_valor,
+      img_frontal: {
+        src: "/images/dungeons/frontals/halls-of-valor.jpg",
+        alt: dict.Dungeons.halls_of_valor,
+      },
+      img_background: {
+        src: "/images/dungeons/backgrounds/halls-of-valor.jpg",
+        alt: dict.Dungeons.halls_of_valor,
+      },
+    },
   ];
   return (
     <div className={styles.base}>
