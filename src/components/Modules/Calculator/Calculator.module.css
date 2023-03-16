@@ -1,7 +1,15 @@
 @import "variables.css";
 
 .base {
-  max-width: 900px;
+  width: min(100%, 900px);
   margin: 0 auto;
   background-color: color_Black;
+  border: 1px solid color_Gray;
+  padding: 2.4rem;
+}
+
+.dungeons_wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(250px, 25%), 1fr));
+  row-gap: 0.8rem;
 }
