@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import "styles/globals.css";
+import "@/src/styles/globals.css";
 import React from "react";
 import { getDictionary } from "utils/dictionaries";
 import { Locale, i18n, siteName, siteUrl } from "@/projectSettings";
