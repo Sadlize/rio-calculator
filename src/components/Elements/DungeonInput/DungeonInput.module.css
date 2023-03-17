@@ -56,7 +56,7 @@
 }
 
 .affixes {
-  display: none;
+  /*display: none;*/
   position: absolute;
   top: 50%;
   left: 50%;
@@ -128,6 +128,11 @@
     &:focus {
       outline: none;
     }
+
+    &:focus .timestamp {
+      opacity: 1;
+      transform: translate3d(0%, -30%, 100px);
+    }
   }
 
   &:hover + .image > img {
@@ -151,4 +156,15 @@
     transition-property: transform;
     transition: .3s linear;
   }
+}
+
+.timestamp {
+  width: 100%;
+  transition: all 0.5s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: red;
+  transform: translate3d(0%, -30%, 100px);
 }

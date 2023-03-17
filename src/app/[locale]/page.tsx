@@ -9,7 +9,6 @@ const Home = ({ params }: TParams) => {
   return (
     <main className={styles.main}>
       <LanguageSwitcher locale={locale} />
-      {locale}
       {/* @ts-expect-error Server Component */}
       <Calculator locale={locale} />
     </main>

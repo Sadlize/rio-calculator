@@ -4,7 +4,8 @@ import styles from "./LanguageSwitcher.module.css";
 import Link from "next/link";
 import { i18n, Locale, localeFullName } from "@/projectSettings";
 import Image from "components/Elements/Image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
 
 const LanguageSwitcher = ({ locale }: { locale: Locale }) => {
   const altLocales = i18n.locales.filter(item => {
@@ -12,9 +13,25 @@ const LanguageSwitcher = ({ locale }: { locale: Locale }) => {
   });
 
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const languageMenuNode = useRef(null);
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (checkClickOutsideRef(e, languageMenuNode)) {
+        setLanguageMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [languageMenuOpen]);
 
   return (
-    <div className={cx(styles.base, styles.dropdown, styles.dropdown__open)}>
+    <div
+      ref={languageMenuNode}
+      className={cx(styles.base, styles.dropdown, styles.dropdown__open)}
+    >
       <button
         className={cx(styles.dropdown_handle, styles.base__handle)}
         onClick={() => {

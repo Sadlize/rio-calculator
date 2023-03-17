@@ -1,8 +1,9 @@
 "use client";
 
 import styles from "./DungeonInput.module.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image, { TDungeonImage } from "components/Elements/Image";
+import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
 
 type TProps = {
   dungeonName: string;
@@ -14,34 +15,66 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
   const [tyrannicalKeyLevel, setTyrannicalKeyLevel] = useState(0);
   const [fortifiedKeyLevel, setFortifiedKeyLevel] = useState(0);
 
+  const [focusTyrannicalInput, setFocusTyrannicalInput] = useState(false);
+  const [focusFortifiedInput, setFocusFortifiedInput] = useState(false);
+
+  const dungeonCardNode = useRef(null);
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (focusTyrannicalInput || focusFortifiedInput) {
+        if (checkClickOutsideRef(e, dungeonCardNode)) {
+          focusTyrannicalInput && setFocusTyrannicalInput(false);
+          focusFortifiedInput && setFocusFortifiedInput(false);
+        }
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [focusFortifiedInput, focusTyrannicalInput]);
+
   return (
-    <div className={styles.base}>
+    <div ref={dungeonCardNode} className={styles.base}>
       <h2>{dungeonName}</h2>
       <div className={styles.content}>
         <div className={styles.affixes}>
-          {/*<img alt="" src="images/affixes/tyrannical.jpg" />*/}
-          {/*<img alt="" src="images/affixes/fortified.jpg" />*/}
+          {/*<img alt="" src="/images/affixes/tyrannical.jpg" />*/}
+          {/*<img alt="" src="/images/affixes/fortified.jpg" />*/}
         </div>
         <div className={styles.inputs}>
-          {/*<img alt="" src="images/affixes/tyrannical.jpg" />*/}
+          {/*<img alt="" src="/images/affixes/tyrannical.jpg" />*/}
           <input
             value={tyrannicalKeyLevel}
+            onFocus={() => {
+              setFocusTyrannicalInput(true);
+              setFocusFortifiedInput(false);
+            }}
             onChange={e => {
               setTyrannicalKeyLevel(+e.target.value);
             }}
           />
+          {/*<div className={styles.timestamp}>123</div>*/}
           <input
             value={fortifiedKeyLevel}
+            onFocus={() => {
+              setFocusTyrannicalInput(false);
+              setFocusFortifiedInput(true);
+            }}
             onChange={e => {
               setFortifiedKeyLevel(+e.target.value);
             }}
           />
-          {/*<img alt="" src="images/affixes/fortified.jpg" />*/}
+
+          {/*<img alt="" src="/images/affixes/fortified.jpg" />*/}
         </div>
         <div className={styles.image}>
           <Image alt={img_frontal.alt} src={img_frontal.src} layout={"cover"} />
         </div>
       </div>
+      {focusTyrannicalInput && <div className={styles.timestamp}>123</div>}
+      {focusFortifiedInput && <div className={styles.timestamp}>456</div>}
       <div className={styles.background}>
         <Image
           alt={img_background.alt}
