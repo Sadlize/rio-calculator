@@ -20,7 +20,7 @@
 
   & h2 {
     font-family: "Noto Sans", sans-serif;
-    color: white;
+    color: color_White;
     position: relative;
     width: 100%;
     z-index: 2;
@@ -119,7 +119,7 @@
     height: 100%;
     background: transparent;
     border: 0;
-    color: white;
+    color: color_White;
     font-size: 3em;
     text-align: center;
     font-weight: 700;
