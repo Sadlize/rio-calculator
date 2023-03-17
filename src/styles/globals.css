@@ -54,6 +54,7 @@ strong, b {
 }
 
 button {
+  font-size: inherit;
   background-color: transparent;
   border-radius: 0;
   border: 0;
