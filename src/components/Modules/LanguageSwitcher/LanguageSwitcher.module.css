@@ -1,0 +1,63 @@
+@import "variables.css";
+
+.dropdown .dropdown_content {
+  display: none;
+  position: absolute;
+}
+
+.dropdown.dropdown__open .dropdown_content {
+  display: inline-block;
+}
+
+.dropdown_arrow {
+  transform: rotate(0deg);
+}
+
+.dropdown.dropdown__open .dropdown_arrow {
+  transform: rotate(180deg);
+}
+
+.base {
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+
+  &__flag {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 1rem;
+  }
+
+  &__content {
+    border-radius: 0.8rem;
+    background-color: color_White07;
+    display: inline-block;
+    padding: 1rem 0;
+  }
+
+  &__content_item {
+    height: 3.2rem;
+    padding: 0 1.8rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 125ms;
+
+    &:hover {
+      background-color: color_White;
+    }
+  }
+
+  &__handle {
+    height: 4rem;
+    color: color_White;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    & .base__flag {
+      margin-right: 0.5rem;
+    }
+  }
+}

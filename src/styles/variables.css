@@ -1,3 +1,5 @@
 /* Colors */
 @value color_Black: rgb(18, 18, 18);
 @value color_Gray: rgb(42, 42, 42);
+@value color_White: rgb(255, 255, 255);
+@value color_White07: rgba(255, 255, 255, 0.7);
