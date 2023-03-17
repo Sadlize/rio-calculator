@@ -16,6 +16,7 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
 
   return (
     <div className={styles.base}>
+      <h2>{dungeonName}</h2>
       <div className={styles.content}>
         <div className={styles.affixes}>
           {/*<img alt="" src="images/affixes/tyrannical.jpg" />*/}
@@ -41,7 +42,6 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
           <Image alt={img_frontal.alt} src={img_frontal.src} layout={"cover"} />
         </div>
       </div>
-      <h2>{dungeonName}</h2>
       <div className={styles.background}>
         <Image
           alt={img_background.alt}

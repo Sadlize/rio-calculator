@@ -11,5 +11,4 @@
 .dungeons_wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(max(250px, 25%), 1fr));
-  row-gap: 0.8rem;
 }
