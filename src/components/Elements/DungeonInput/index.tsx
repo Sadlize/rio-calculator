@@ -4,6 +4,8 @@ import styles from "./DungeonInput.module.css";
 import { useEffect, useRef, useState } from "react";
 import Image, { TDungeonImage } from "components/Elements/Image";
 import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
+import { Transition } from "react-transition-group";
+import cx from "clsx";
 
 type TProps = {
   dungeonName: string;
@@ -18,11 +20,12 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
   const [focusTyrannicalInput, setFocusTyrannicalInput] = useState(false);
   const [focusFortifiedInput, setFocusFortifiedInput] = useState(false);
 
-  const dungeonCardNode = useRef(null);
+  const $dungeonCardNode = useRef(null);
+  const $timestampNode = useRef(null);
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (focusTyrannicalInput || focusFortifiedInput) {
-        if (checkClickOutsideRef(e, dungeonCardNode)) {
+        if (checkClickOutsideRef(e, $dungeonCardNode)) {
           focusTyrannicalInput && setFocusTyrannicalInput(false);
           focusFortifiedInput && setFocusFortifiedInput(false);
         }
@@ -36,7 +39,7 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
   }, [focusFortifiedInput, focusTyrannicalInput]);
 
   return (
-    <div ref={dungeonCardNode} className={styles.base}>
+    <div ref={$dungeonCardNode} className={styles.base}>
       <h2>{dungeonName}</h2>
       <div className={styles.content}>
         <div className={styles.affixes}>
@@ -73,8 +76,30 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
           <Image alt={img_frontal.alt} src={img_frontal.src} layout={"cover"} />
         </div>
       </div>
-      {focusTyrannicalInput && <div className={styles.timestamp}>123</div>}
-      {focusFortifiedInput && <div className={styles.timestamp}>456</div>}
+      <Transition
+        mountOnEnter
+        unmountOnExit
+        nodeRef={$timestampNode}
+        in={focusTyrannicalInput || focusFortifiedInput}
+        timeout={{
+          appear: 0,
+          exit: 300,
+        }}
+      >
+        {status => (
+          <div
+            ref={$timestampNode}
+            className={cx(styles.timestamp, {
+              [styles.timestamp_show]: status === "entered",
+            })}
+          >
+            <input type="range" min="-840400" max="840400" step="16808" />
+            {/*{focusTyrannicalInput && 123}*/}
+            {/*{focusFortifiedInput && 456}*/}
+          </div>
+        )}
+      </Transition>
+
       <div className={styles.background}>
         <Image
           alt={img_background.alt}

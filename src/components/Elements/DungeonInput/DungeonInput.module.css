@@ -128,11 +128,6 @@
     &:focus {
       outline: none;
     }
-
-    &:focus .timestamp {
-      opacity: 1;
-      transform: translate3d(0%, -30%, 100px);
-    }
   }
 
   &:hover + .image > img {
@@ -160,11 +155,25 @@
 
 .timestamp {
   width: 100%;
-  transition: all 0.5s;
+  height: fit-content;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 100;
-  background: red;
-  transform: translate3d(0%, -30%, 100px);
+  background: color_Black;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 300ms linear;
+  transition-property: opacity, transform, translateY;
+
+  &_show {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  & > input {
+    width: 70%;
+    margin: auto;
+    appearance: auto;
+  }
 }
