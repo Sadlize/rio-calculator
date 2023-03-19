@@ -159,7 +159,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 9;
   background: color_Black;
   opacity: 0;
   transform: translateY(100%);

@@ -3,7 +3,7 @@
 .base {
   display: inline-block;
   position: relative;
-  z-index: 10;
+  z-index: 4;
 }
 
 .dropdown {

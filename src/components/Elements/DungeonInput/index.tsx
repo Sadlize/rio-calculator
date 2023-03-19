@@ -49,7 +49,8 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
         <div className={styles.inputs}>
           {/*<img alt="" src="/images/affixes/tyrannical.jpg" />*/}
           <input
-            value={tyrannicalKeyLevel}
+            // value={tyrannicalKeyLevel}
+            placeholder={"0"}
             onFocus={() => {
               setFocusTyrannicalInput(true);
               setFocusFortifiedInput(false);
@@ -58,9 +59,9 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
               setTyrannicalKeyLevel(+e.target.value);
             }}
           />
-          {/*<div className={styles.timestamp}>123</div>*/}
           <input
-            value={fortifiedKeyLevel}
+            // value={fortifiedKeyLevel}
+            placeholder={"0"}
             onFocus={() => {
               setFocusTyrannicalInput(false);
               setFocusFortifiedInput(true);

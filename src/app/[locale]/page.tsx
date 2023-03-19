@@ -7,11 +7,17 @@ const Home = ({ params }: TParams) => {
   const { locale } = params;
 
   return (
-    <main className={styles.main}>
-      <LanguageSwitcher locale={locale} />
-      {/* @ts-expect-error Server Component */}
-      <Calculator locale={locale} />
-    </main>
+    <>
+      <header className={styles.header}>
+        <div className={styles.header__items}>
+          <LanguageSwitcher locale={locale} />
+        </div>
+      </header>
+      <main className={styles.main}>
+        {/* @ts-expect-error Server Component */}
+        <Calculator locale={locale} />
+      </main>
+    </>
   );
 };
 
