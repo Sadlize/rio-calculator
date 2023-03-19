@@ -149,7 +149,7 @@
     height: 100%;
     border-radius: 0.5rem;
     transition-property: transform;
-    transition: .3s linear;
+    transition: transition_300 easeOutCubic;
   }
 }
 
@@ -163,7 +163,7 @@
   background: color_Black;
   opacity: 0;
   transform: translateY(100%);
-  transition: 300ms linear;
+  transition: transition_300 easeOutCubic;
   transition-property: opacity, transform, translateY;
 
   &_show {

@@ -63,7 +63,7 @@ const LanguageSwitcher = ({ locale }: { locale: Locale }) => {
         in={languageMenuOpen}
         timeout={{
           appear: 0,
-          exit: 0,
+          exit: 300,
         }}
       >
         {status => (

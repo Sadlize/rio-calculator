@@ -29,8 +29,6 @@
     transform: rotate(0deg);
   }
 
-
-
   &__content {
     border-radius: 0.8rem;
     background-color: color_White07;
@@ -40,11 +38,16 @@
     top: 100%;
     left: 0;
     opacity: 0;
-    transition: 300ms linear;
-    transition-property: opacity;
+    visibility: hidden;
+    transform: scale(.9);
+    transform-origin: top left;
+    transition: transition_300 easeOutCubic;
+    transition-property: visibility, opacity, transform;
 
     &_show {
       opacity: 1;
+      visibility: visible;
+      transform: scale(1);
     }
   }
 
@@ -61,7 +64,7 @@
     align-items: center;
     cursor: pointer;
     background-color: transparent;
-    transition: background-color 125ms;
+    transition: transition_300 easeOutCubic;
 
     &:hover {
       background-color: color_White;
@@ -73,7 +76,7 @@
   margin-left: 0.5rem;
 
   path{
-    transition: ease 300ms;
+    transition: transition_300 easeOutCubic;
     transition-property: d;
   }
 }
