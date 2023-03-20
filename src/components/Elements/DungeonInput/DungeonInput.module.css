@@ -2,21 +2,13 @@
 
 .base {
   width: 100%;
-  height: fit-content;
+  height: 140px;
   position: relative;
   overflow: hidden;
-  padding-bottom: 1.6rem;
-
-  &:before {
-    content: "";
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom, color_Black, color_Black01, color_Black);
-  }
+  padding: 1.6rem;
+  border-radius: 0.5rem;
+  background-color: color_Black;
+  border: 1px solid color_Gray;
 
   & h2 {
     font-family: "Noto Sans", sans-serif;
@@ -25,21 +17,7 @@
     width: 100%;
     z-index: 2;
     text-align: center;
-  }
-}
-
-.background {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    filter: blur(0.05rem);
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -50,106 +28,73 @@
   align-items: center;
   position: relative;
   z-index: 3;
-  width: 70%;
-  height: 100%;
+  width: 100%;
+  height: fit-content;
   margin: 0 auto;
 }
 
-.affixes {
-  /*display: none;*/
+.background {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 56px;
-  height: 56px;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
 
-  > img:first-child,
-  > img:last-child {
-    position: absolute;
-    top: 0;
-    width: 50%;
+  > img {
+    width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
-
-  > img:first-child {
-    left: 0;
-    object-position: 0 100%;
-  }
-
-  > img:last-child {
-    right: 0;
-    object-position: 100% 0;
+    filter: blur(0.05rem);
   }
 }
 
+
 .inputs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   display: grid;
-  grid-gap: 6.4%;
   grid-auto-flow: column;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
   align-items: center;
   justify-items: center;
 
-  &:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 50%;
-    width: 1px;
-    background: white;
-  }
-
-  img {
-    /*
-    width: 28px;
-    height: 28px;
-     */
-  }
-
   input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
+    width: 75px;
+    height: 75px;
     border: 0;
     color: color_White;
     font-size: 3em;
     text-align: center;
     font-weight: 700;
-    text-shadow: -1px -1px 4px #000, 1px -1px 4px #000, -1px 1px 4px #000, 1px 1px 4px #000;
+    text-shadow: -1px -1px 1px color_Black, 1px -1px 1px color_Black, -1px 1px 1px color_Black, 1px 1px 1px color_Black;
+
+    &:nth-child(1) {
+      background-size: 100% 100%;
+      background-image: url(https://media.discordapp.net/attachments/848667196400992317/1086995636219551805/wowmplusscore3_tyr.png?width=250&height=250);
+    }
+
+    &:nth-child(2) {
+      background-size: 100% 100%;
+      background-image: url(https://media.discordapp.net/attachments/848667196400992317/1086995635921748018/wowmplusscore3_fort.png?width=250&height=250);
+    }
+
+    &::placeholder {
+      color: color_White;
+      opacity: 1; /*Firefox*/
+    }
 
     &:focus {
+      &::placeholder {
+        opacity: 0;
+      }
       outline: none;
     }
   }
 
   &:hover + .image > img {
     transform: scale(1.2);
-  }
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-  border-radius: 0.5rem;
-  position: relative;
-  padding-top: 40%;
-
-  > img {
-    width: 100%;
-    height: 100%;
-    border-radius: 0.5rem;
-    transition-property: transform;
-    transition: transition_300 easeOutCubic;
   }
 }
 
@@ -160,7 +105,6 @@
   bottom: 0;
   left: 0;
   z-index: 9;
-  background: color_Black;
   opacity: 0;
   transform: translateY(100%);
   transition: transition_300 easeOutCubic;

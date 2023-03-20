@@ -3,12 +3,10 @@
 .base {
   width: min(100%, 900px);
   margin: 0 auto;
-  background-color: color_Black;
-  border: 1px solid color_Gray;
-  padding: 2.4rem;
 }
 
 .dungeons_wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(max(250px, 25%), 1fr));
+  gap: 1.2rem;
 }

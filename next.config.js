@@ -6,6 +6,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compress: true,
+  images: {
+    unoptimized: true,
+  },
   async rewrites() {
     return [
       {

@@ -9,11 +9,10 @@ import cx from "clsx";
 
 type TProps = {
   dungeonName: string;
-  img_frontal: TDungeonImage;
   img_background: TDungeonImage;
 };
 
-const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
+const DungeonInput = ({ dungeonName, img_background }: TProps) => {
   const [tyrannicalKeyLevel, setTyrannicalKeyLevel] = useState(0);
   const [fortifiedKeyLevel, setFortifiedKeyLevel] = useState(0);
 
@@ -42,12 +41,7 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
     <div ref={$dungeonCardNode} className={styles.base}>
       <h2>{dungeonName}</h2>
       <div className={styles.content}>
-        <div className={styles.affixes}>
-          {/*<img alt="" src="/images/affixes/tyrannical.jpg" />*/}
-          {/*<img alt="" src="/images/affixes/fortified.jpg" />*/}
-        </div>
         <div className={styles.inputs}>
-          {/*<img alt="" src="/images/affixes/tyrannical.jpg" />*/}
           <input
             // value={tyrannicalKeyLevel}
             placeholder={"0"}
@@ -65,16 +59,12 @@ const DungeonInput = ({ dungeonName, img_frontal, img_background }: TProps) => {
             onFocus={() => {
               setFocusTyrannicalInput(false);
               setFocusFortifiedInput(true);
+              // e.target.placeholder = "";
             }}
             onChange={e => {
               setFortifiedKeyLevel(+e.target.value);
             }}
           />
-
-          {/*<img alt="" src="/images/affixes/fortified.jpg" />*/}
-        </div>
-        <div className={styles.image}>
-          <Image alt={img_frontal.alt} src={img_frontal.src} layout={"cover"} />
         </div>
       </div>
       <Transition
