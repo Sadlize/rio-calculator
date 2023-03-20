@@ -3,6 +3,19 @@ import "@/src/styles/globals.css";
 import React from "react";
 import { getDictionary } from "utils/dictionaries";
 import { Locale, i18n, siteName, siteUrl } from "@/projectSettings";
+import localFont from "next/font/local";
+
+const font = localFont({
+  display: "swap",
+  src: [
+    // regular
+    {
+      path: "../../../public/fonts/fritz-quadrata-cyrillic.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
 
 export async function generateMetadata({ params }: TParams): Promise<Metadata> {
   const { locale } = params;
@@ -90,7 +103,7 @@ export const dynamicParams = false;
 export default function RootLayout({ children, params }: IProps) {
   return (
     <html lang={params.locale}>
-      <body>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
