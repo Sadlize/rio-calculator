@@ -14,5 +14,8 @@
     "ruby_life_pools": "Ruby Life Pools",
     "the_azure_vault": "The Azure Vault",
     "halls_of_valor": "Halls of Valor"
+  },
+  "Buttons": {
+    "import": "Import"
   }
 }

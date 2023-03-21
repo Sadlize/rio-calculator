@@ -1,0 +1,8 @@
+@import "variables.css";
+
+.base {
+  background-color: color_SelectiveY;
+  height: fit-content;
+  padding: 0.6rem 1.2rem;
+  color: color_Black;
+}

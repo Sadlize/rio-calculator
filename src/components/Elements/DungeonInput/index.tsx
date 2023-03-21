@@ -93,6 +93,7 @@ const DungeonInput = ({ dungeonName, img_background }: TProps) => {
 
       <div className={styles.background}>
         <Image
+          priority
           alt={img_background.alt}
           src={img_background.src}
           layout={"cover"}

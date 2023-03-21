@@ -2,6 +2,7 @@ import styles from "../Page.module.css";
 import { TParams } from "./layout";
 import Calculator from "components/Modules/Calculator";
 import LanguageSwitcher from "components/Modules/LanguageSwitcher";
+import CharacterImport from "components/Modules/CharacterImport";
 
 const Home = ({ params }: TParams) => {
   const { locale } = params;
@@ -11,6 +12,8 @@ const Home = ({ params }: TParams) => {
       <header className={styles.header}>
         <div className={styles.header__items}>
           <LanguageSwitcher locale={locale} />
+          {/* @ts-expect-error Server Component */}
+          <CharacterImport locale={locale} />
         </div>
       </header>
       <main className={styles.main}>

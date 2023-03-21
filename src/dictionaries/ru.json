@@ -14,5 +14,8 @@
     "ruby_life_pools": "Рубиновые Омуты Жизни",
     "the_azure_vault": "Лазурное хранилище",
     "halls_of_valor": "Чертоги Доблести"
+  },
+  "Buttons": {
+    "import": "Импорт"
   }
 }

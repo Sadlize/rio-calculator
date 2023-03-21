@@ -37,6 +37,7 @@ const Image = ({
       height={height}
       fill={!!layout}
       style={ImageInlineStyles}
+      sizes={"1vh"}
     />
   );
 };
