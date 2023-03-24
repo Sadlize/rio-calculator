@@ -1,8 +1,10 @@
 import NextImage from "next/image";
-import CSS, { Property } from "csstype";
-import ObjectFit = Property.ObjectFit;
+import { Property } from "csstype";
 
-export type TDungeonImage = Pick<TProps, "src" | "width" | "height" | "alt">;
+export type TDungeonImage = Pick<
+  TProps,
+  "src" | "width" | "height" | "alt" | "blurDataUrl"
+>;
 
 type TProps = {
   priority?: boolean;
@@ -12,6 +14,7 @@ type TProps = {
   layout?: string;
   alt: string;
   className?: string;
+  blurDataUrl?: string;
 };
 
 const Image = ({
@@ -22,23 +25,28 @@ const Image = ({
   layout,
   alt,
   className,
+  blurDataUrl,
 }: TProps) => {
-  const ImageInlineStyles: CSS.Properties = {
-    objectFit: !!layout ? (layout as ObjectFit) : undefined,
+  const ImageInlineStyles: React.CSSProperties = {
+    objectFit: !!layout ? (layout as Property.ObjectFit) : undefined,
   };
 
   return (
-    <NextImage
-      priority={priority}
-      className={className}
-      alt={alt}
-      src={src}
-      width={width}
-      height={height}
-      fill={!!layout}
-      style={ImageInlineStyles}
-      sizes={"1vh"}
-    />
+    <>
+      <NextImage
+        placeholder={blurDataUrl ? "blur" : undefined}
+        blurDataURL={blurDataUrl}
+        priority={priority}
+        className={className}
+        alt={alt}
+        src={src}
+        width={width}
+        height={height}
+        fill={!!layout}
+        style={ImageInlineStyles}
+        sizes={"99vw"}
+      />
+    </>
   );
 };
 

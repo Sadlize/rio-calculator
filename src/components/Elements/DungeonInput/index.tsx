@@ -90,12 +90,12 @@ const DungeonInput = ({ dungeonName, img_background }: TProps) => {
           </div>
         )}
       </Transition>
-
       <div className={styles.background}>
         <Image
           priority
           alt={img_background.alt}
           src={img_background.src}
+          blurDataUrl={img_background.blurDataUrl}
           layout={"cover"}
         />
       </div>

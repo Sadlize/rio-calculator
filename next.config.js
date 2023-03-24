@@ -7,7 +7,12 @@ const nextConfig = {
   swcMinify: true,
   compress: true,
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
   async rewrites() {
     return [

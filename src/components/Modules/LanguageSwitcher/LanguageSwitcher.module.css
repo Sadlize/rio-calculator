@@ -2,13 +2,12 @@
 
 .base {
   display: inline-block;
-  position: relative;
   z-index: 4;
 }
 
 .dropdown {
   &__handle {
-    height: 4rem;
+    height: fit-content;
     color: color_White;
     display: flex;
     align-items: center;
@@ -59,7 +58,7 @@
 
   &__content_item {
     height: 3.2rem;
-    padding: 0 1.8rem;
+    padding: 0 1.6rem;
     display: flex;
     align-items: center;
     cursor: pointer;
