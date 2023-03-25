@@ -2,6 +2,7 @@
 
 .base {
   display: inline-block;
+  position: relative;
   z-index: 4;
 }
 
