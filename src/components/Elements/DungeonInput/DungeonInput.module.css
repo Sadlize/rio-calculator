@@ -2,7 +2,7 @@
 
 .base {
   width: 100%;
-  height: 140px;
+  height: fit-content;
   position: relative;
   overflow: hidden;
   padding: 1.6rem;
@@ -11,6 +11,7 @@
   border: 1px solid color_SelectiveY05;
 
   & h2 {
+    font-size: 1.75rem;
     color: color_White;
     position: relative;
     width: 100%;
@@ -63,7 +64,7 @@
     height: 75px;
     border: 0;
     color: color_White;
-    font-size: 3em;
+    font-size: 3rem;
     text-align: center;
     font-weight: 700;
     text-shadow: -1px -1px 1px color_Black, 1px -1px 1px color_Black, -1px 1px 1px color_Black, 1px 1px 1px color_Black;
