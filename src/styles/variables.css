@@ -6,6 +6,7 @@
 @value color_White: rgb(255, 255, 255);
 @value color_White07: rgba(255, 255, 255, 0.7);
 @value color_SelectiveY: rgb(248 183 0);
+@value color_SelectiveY05: rgba(248, 183, 0, 0.5);
 
 /*Transitions*/
 @value transition_450: 450ms;
