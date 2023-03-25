@@ -67,29 +67,36 @@ const LanguageSwitcher = ({ locale }: { locale: Locale }) => {
         }}
       >
         {status => (
-          <div
-            ref={$alternativeLanguagesMenuNode}
-            className={cx(styles.dropdown__content, {
-              [styles.dropdown__content_show]: status === "entered",
-            })}
-          >
-            {(altLocales || []).map((locale, index) => (
-              <Link
-                key={index}
-                href={`./${locale}`}
-                className={styles.dropdown__content_item}
-              >
-                <Image
-                  src={`/images/languages/${locale}.jpg`}
-                  className={styles.dropdown__flag}
-                  width={128}
-                  height={128}
-                  alt={`${locale} flag`}
-                />
-                {localeFullName[locale]}
-              </Link>
-            ))}
-          </div>
+          <>
+            <div
+              ref={$alternativeLanguagesMenuNode}
+              className={cx(styles.dropdown__content, {
+                [styles.dropdown__content_show]: status === "entered",
+              })}
+            >
+              {(altLocales || []).map((locale, index) => (
+                <Link
+                  key={index}
+                  href={`./${locale}`}
+                  className={styles.dropdown__content_item}
+                >
+                  <Image
+                    src={`/images/languages/${locale}.jpg`}
+                    className={styles.dropdown__flag}
+                    width={128}
+                    height={128}
+                    alt={`${locale} flag`}
+                  />
+                  {localeFullName[locale]}
+                </Link>
+              ))}
+            </div>
+            <div
+              className={cx(styles.overlay, {
+                [styles.overlay_popup]: status === "entered",
+              })}
+            ></div>
+          </>
         )}
       </Transition>
     </div>
