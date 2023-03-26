@@ -1,3 +1,19 @@
+/* Breakpoint */
+@value BP1: 414px;
+@value BP2: 1024px;
+@value BP3: 1600px;
+@value BP4: 1920px;
+
+@value BP1_min: screen and (min-width: 0);
+@value BP1_max: screen and (max-width: BP1);
+@value BP2_min: screen and (min-width: calc(BP1 + 1px));
+@value BP2_max: screen and (max-width: BP2);
+@value BP3_min: screen and (min-width: calc(BP2 + 1px));
+@value BP3_max: screen and (max-width: BP3);
+@value BP4_min: screen and (min-width: calc(BP3 + 1px));
+@value BP4_max: screen and (max-width: BP4);
+@value BP5_min: screen and (min-width: calc(BP4 + 1px));
+
 /* Colors */
 @value color_Black: rgb(18, 18, 18);
 @value color_Black01: rgba(18, 18, 18, 0.1);

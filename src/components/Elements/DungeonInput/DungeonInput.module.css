@@ -6,12 +6,15 @@
   position: relative;
   overflow: hidden;
   padding: 1.6rem;
-  border-radius: 0.5rem;
   background-color: color_Black;
   border: 1px solid color_SelectiveY05;
 
+  @media BP2_min {
+    border-radius: 0.5rem;
+  }
+
   & h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: color_White;
     position: relative;
     width: 100%;
