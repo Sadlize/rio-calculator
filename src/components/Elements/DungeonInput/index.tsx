@@ -6,6 +6,7 @@ import Image, { TDungeonImage } from "components/Elements/Image";
 import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
 import { Transition } from "react-transition-group";
 import cx from "clsx";
+import { isInputValueNumber } from "utils/helpers";
 
 type TProps = {
   dungeonName: string;
@@ -13,8 +14,8 @@ type TProps = {
 };
 
 const DungeonInput = ({ dungeonName, img_background }: TProps) => {
-  const [tyrannicalKeyLevel, setTyrannicalKeyLevel] = useState(0);
-  const [fortifiedKeyLevel, setFortifiedKeyLevel] = useState(0);
+  const [tyrannicalKeyLevel, setTyrannicalKeyLevel] = useState("");
+  const [fortifiedKeyLevel, setFortifiedKeyLevel] = useState("");
 
   const [focusTyrannicalInput, setFocusTyrannicalInput] = useState(false);
   const [focusFortifiedInput, setFocusFortifiedInput] = useState(false);
@@ -43,26 +44,34 @@ const DungeonInput = ({ dungeonName, img_background }: TProps) => {
       <div className={styles.content}>
         <div className={styles.inputs}>
           <input
-            // value={tyrannicalKeyLevel}
+            value={tyrannicalKeyLevel}
             placeholder={"0"}
+            maxLength={2}
             onFocus={() => {
               setFocusTyrannicalInput(true);
               setFocusFortifiedInput(false);
             }}
             onChange={e => {
-              setTyrannicalKeyLevel(+e.target.value);
+              if (isInputValueNumber(e.target.value)) {
+                setTyrannicalKeyLevel(
+                  e.target.value !== "" ? `${+e.target.value}` : ""
+                );
+              }
             }}
           />
           <input
-            // value={fortifiedKeyLevel}
+            value={fortifiedKeyLevel}
             placeholder={"0"}
             onFocus={() => {
               setFocusTyrannicalInput(false);
               setFocusFortifiedInput(true);
-              // e.target.placeholder = "";
             }}
             onChange={e => {
-              setFortifiedKeyLevel(+e.target.value);
+              if (isInputValueNumber(e.target.value)) {
+                setFortifiedKeyLevel(
+                  e.target.value !== "" ? `${+e.target.value}` : ""
+                );
+              }
             }}
           />
         </div>
