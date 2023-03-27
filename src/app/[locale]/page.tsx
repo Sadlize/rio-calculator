@@ -3,6 +3,7 @@ import { TParams } from "./layout";
 import Calculator from "components/Modules/Calculator";
 import LanguageSwitcher from "components/Modules/LanguageSwitcher";
 import CharacterImport from "components/Modules/CharacterImport";
+import ScoreValue from "components/Modules/ScoreValue";
 
 const Home = ({ params }: TParams) => {
   const { locale } = params;
@@ -12,12 +13,11 @@ const Home = ({ params }: TParams) => {
       <header className={styles.header}>
         <div className={styles.header__items}>
           <LanguageSwitcher locale={locale} />
-          {/* @ts-expect-error Server Component */}
+          <ScoreValue />
           <CharacterImport locale={locale} />
         </div>
       </header>
       <main className={styles.main}>
-        {/* @ts-expect-error Server Component */}
         <Calculator locale={locale} />
       </main>
     </>
