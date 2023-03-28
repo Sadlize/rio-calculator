@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { RootState, useAppSelector } from "redux/store";
 
 const ScoreValue = () => {
-  const [score, setScore] = useState(0);
-  return <div>{score}</div>;
+  const score = useAppSelector((state: RootState) => state.score.value);
+  return <div style={{ color: "white" }}>{score}</div>;
 };
 
 export default ScoreValue;

@@ -1,10 +1,7 @@
 import NextImage from "next/image";
 import { Property } from "csstype";
 
-export type TDungeonImage = Pick<
-  TProps,
-  "src" | "width" | "height" | "alt" | "blurDataUrl"
->;
+export type TDungeonImage = Pick<TProps, "src" | "alt" | "blurDataUrl">;
 
 type TProps = {
   priority?: boolean;
@@ -14,7 +11,7 @@ type TProps = {
   layout?: string;
   alt: string;
   className?: string;
-  blurDataUrl?: string;
+  blurDataUrl?: string | undefined;
 };
 
 const Image = ({

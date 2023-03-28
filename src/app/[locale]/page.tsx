@@ -4,12 +4,12 @@ import Calculator from "components/Modules/Calculator";
 import LanguageSwitcher from "components/Modules/LanguageSwitcher";
 import CharacterImport from "components/Modules/CharacterImport";
 import ScoreValue from "components/Modules/ScoreValue";
+import ReduxProvider from "redux/ReduxProvider";
 
 const Home = ({ params }: TParams) => {
   const { locale } = params;
-
   return (
-    <>
+    <ReduxProvider>
       <header className={styles.header}>
         <div className={styles.header__items}>
           <LanguageSwitcher locale={locale} />
@@ -20,7 +20,7 @@ const Home = ({ params }: TParams) => {
       <main className={styles.main}>
         <Calculator locale={locale} />
       </main>
-    </>
+    </ReduxProvider>
   );
 };
 

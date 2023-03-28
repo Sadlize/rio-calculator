@@ -7,6 +7,8 @@ import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
 import { Transition } from "react-transition-group";
 import cx from "clsx";
 import { isInputValueNumber } from "utils/helpers";
+import { setScoreByAmount } from "redux/slices";
+import { useAppDispatch } from "redux/store";
 
 type TProps = {
   dungeonName: string;
@@ -14,6 +16,8 @@ type TProps = {
 };
 
 const DungeonInput = ({ dungeonName, img_background }: TProps) => {
+  const dispatch = useAppDispatch();
+
   const [tyrannicalKeyLevel, setTyrannicalKeyLevel] = useState("");
   const [fortifiedKeyLevel, setFortifiedKeyLevel] = useState("");
 
@@ -56,6 +60,7 @@ const DungeonInput = ({ dungeonName, img_background }: TProps) => {
                 setTyrannicalKeyLevel(
                   e.target.value !== "" ? `${+e.target.value}` : ""
                 );
+                dispatch(setScoreByAmount(+e.target.value));
               }
             }}
           />
