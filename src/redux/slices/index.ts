@@ -1,14 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { dungeonMaxTimestamp } from "utils/dungeons";
+import {
+  dungeonMaxTimestamp,
+  TDungeonKeys,
+  TDungeonWeeks,
+} from "utils/dungeons";
+
+const initialObj: { [key: string]: { Tyrannical: number; Fortified: number } } =
+  Object.keys(dungeonMaxTimestamp).reduce((acc, dungeon) => {
+    return { ...acc, [dungeon]: { Tyrannical: 0, Fortified: 0 } };
+  }, {});
+
+type TPayload = {
+  amount: number;
+  dungeon: TDungeonKeys;
+  week: TDungeonWeeks;
+};
 
 export const scoreSlice = createSlice({
   name: "score",
-  initialState: Object.keys(dungeonMaxTimestamp).reduce((acc, dungeon) => {
-    return { ...acc, [dungeon]: { Tyrannical: 0, Fortified: 0 } };
-  }, {}),
+  initialState: initialObj,
   reducers: {
-    setDungeonScore(state, action: PayloadAction<number>) {
+    setDungeonScore(state, action: PayloadAction<TPayload>) {
       const { amount, dungeon, week } = action.payload;
       state[dungeon][week] = amount;
     },
@@ -21,8 +34,8 @@ export function setDungeonScore({
   week,
 }: {
   amount: number;
-  dungeon: string;
-  week: "Tyrannical" | "Fortified";
+  dungeon: TDungeonKeys;
+  week: TDungeonWeeks;
 }) {
   return {
     type: "score/setDungeonScore",

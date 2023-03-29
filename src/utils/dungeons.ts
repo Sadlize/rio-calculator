@@ -4,7 +4,7 @@ import { getDictionary } from "utils/dictionaries";
 
 export type Dungeon = {
   id: number;
-  abbreviation: string;
+  abbreviation: TDungeonKeys;
   name: string;
   img_background: TDungeonImage;
 };
@@ -19,6 +19,9 @@ export const dungeonMaxTimestamp = {
   AV: 2130999,
   NO: 2400999,
 };
+
+export type TDungeonKeys = keyof typeof dungeonMaxTimestamp;
+export type TDungeonWeeks = "Tyrannical" | "Fortified";
 
 export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
   const dict = await getDictionary(locale);

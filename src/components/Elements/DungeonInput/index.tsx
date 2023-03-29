@@ -9,9 +9,10 @@ import cx from "clsx";
 import { isInputValueNumber } from "utils/helpers";
 import { RootState, useAppDispatch, useAppSelector } from "redux/store";
 import { setDungeonScore } from "redux/slices";
+import { TDungeonKeys, TDungeonWeeks } from "utils/dungeons";
 
 type TProps = {
-  abbreviation: string;
+  abbreviation: TDungeonKeys;
   dungeonName: string;
   img_background: TDungeonImage;
 };
@@ -28,7 +29,7 @@ const DungeonInput = ({
   const fortifiedKeyLevel = score.Fortified;
 
   const [rangeSliderType, setRangeSliderType] = useState<
-    undefined | "Tyrannical" | "Fortified"
+    undefined | TDungeonWeeks
   >(undefined);
 
   const $dungeonCardNode = useRef(null);
