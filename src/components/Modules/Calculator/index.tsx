@@ -11,6 +11,7 @@ const Calculator = async ({ locale }: { locale: Locale }) => {
         {dungeons.map(dungeon => (
           <DungeonInput
             key={dungeon.id}
+            abbreviation={dungeon.abbreviation}
             dungeonName={dungeon.name}
             img_background={dungeon.img_background}
           />

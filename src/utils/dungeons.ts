@@ -4,8 +4,20 @@ import { getDictionary } from "utils/dictionaries";
 
 export type Dungeon = {
   id: number;
+  abbreviation: string;
   name: string;
   img_background: TDungeonImage;
+};
+
+export const dungeonMaxTimestamp = {
+  AA: 1920999,
+  COS: 1800999,
+  HOV: 2280999,
+  RLP: 1800999,
+  SBG: 1980999,
+  TJS: 1800999,
+  AV: 2130999,
+  NO: 2400999,
 };
 
 export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
@@ -13,6 +25,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
   return [
     {
       id: 0,
+      abbreviation: "AA",
       name: dict.Dungeons.algethar_academy,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668716/algethar-academy.webp",
@@ -23,6 +36,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 1,
+      abbreviation: "TJS",
       name: dict.Dungeons.temple_of_the_jade_serpent,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668716/temple-of-the-jade-serpent.webp",
@@ -33,6 +47,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 2,
+      abbreviation: "SBG",
       name: dict.Dungeons.shadowmoon_burial_grounds,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668715/shadowmoon-burial-grounds.webp",
@@ -43,6 +58,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 3,
+      abbreviation: "NO",
       name: dict.Dungeons.the_nokhud_offensive,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668715/the-nokhud-offensive.webp",
@@ -53,6 +69,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 4,
+      abbreviation: "COS",
       name: dict.Dungeons.court_of_stars,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668716/court-of-stars.webp",
@@ -63,6 +80,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 5,
+      abbreviation: "RLP",
       name: dict.Dungeons.ruby_life_pools,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668716/ruby-life-pools.webp",
@@ -73,6 +91,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 6,
+      abbreviation: "AV",
       name: dict.Dungeons.the_azure_vault,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668152/the-azure-vault.webp",
@@ -83,6 +102,7 @@ export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
     },
     {
       id: 7,
+      abbreviation: "HOV",
       name: dict.Dungeons.halls_of_valor,
       img_background: {
         src: "https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1679668716/halls-of-valor.webp",
