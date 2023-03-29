@@ -1,8 +1,8 @@
 import { TDungeonImage } from "components/Elements/Image";
-import { Locale } from "@/projectSettings";
+import { TLocale } from "@/projectSettings";
 import { getDictionary } from "utils/dictionaries";
 
-export type Dungeon = {
+export type TDungeon = {
   id: number;
   abbreviation: TDungeonKeys;
   name: string;
@@ -23,7 +23,9 @@ export const dungeonMaxTimestamp = {
 export type TDungeonKeys = keyof typeof dungeonMaxTimestamp;
 export type TDungeonWeeks = "Tyrannical" | "Fortified";
 
-export const getDungeons = async (locale: Locale): Promise<Array<Dungeon>> => {
+export const getDungeons = async (
+  locale: TLocale
+): Promise<Array<TDungeon>> => {
   const dict = await getDictionary(locale);
   return [
     {

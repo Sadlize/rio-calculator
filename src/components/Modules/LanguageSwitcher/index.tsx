@@ -3,14 +3,14 @@
 import cx from "clsx";
 import styles from "./LanguageSwitcher.module.css";
 import Link from "next/link";
-import { i18n, Locale, localeFullName } from "@/projectSettings";
+import { i18n, TLocale, localeFullName } from "@/projectSettings";
 import Image from "components/Elements/Image";
 import { useEffect, useRef, useState } from "react";
 import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
 import { Transition } from "react-transition-group";
 import { DropdownChevron } from "components/Elements/Icons";
 
-const LanguageSwitcher = ({ locale }: { locale: Locale }) => {
+const LanguageSwitcher = ({ locale }: { locale: TLocale }) => {
   const altLocales = i18n.locales.filter(item => {
     return item !== locale;
   });

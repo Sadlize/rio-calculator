@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import "@/src/styles/globals.css";
 import React from "react";
 import { getDictionary } from "utils/dictionaries";
-import { Locale, i18n, siteName, siteUrl } from "@/projectSettings";
+import { TLocale, i18n, siteName, siteUrl } from "@/projectSettings";
 import localFont from "next/font/local";
 
 const font = localFont({
@@ -113,5 +113,5 @@ interface IProps extends TParams {
 }
 
 export type TParams = {
-  params: { locale: Locale };
+  params: { locale: TLocale };
 };

@@ -1,9 +1,9 @@
 import styles from "./Calculator.module.css";
 import DungeonInput from "components/Elements/DungeonInput";
-import { Locale } from "@/projectSettings";
+import { TLocale } from "@/projectSettings";
 import { getDungeons } from "utils/dungeons";
 
-const Calculator = async ({ locale }: { locale: Locale }) => {
+const Calculator = async ({ locale }: { locale: TLocale }) => {
   const dungeons = await getDungeons(locale);
   return (
     <div className={styles.base}>
