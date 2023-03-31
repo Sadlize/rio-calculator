@@ -107,19 +107,20 @@
   bottom: 0;
   left: 0;
   z-index: 9;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: transition_300 easeOutCubic;
-  transition-property: opacity, transform, translateY;
-
-  &_show {
-    opacity: 1;
-    transform: translateY(0%);
-  }
+  overflow: hidden;
 
   & > input {
     width: 70%;
     margin: auto;
     appearance: auto;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transition_300 easeOutCubic;
+    transition-property: opacity, transform;
+  }
+
+  &_show > input{
+    opacity: 1;
+    transform: translateY(0%);
   }
 }
