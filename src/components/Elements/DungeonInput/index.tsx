@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./DungeonInput.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, FocusEvent } from "react";
 import Image, { TDungeonImage } from "components/Elements/Image";
 import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
 import { Transition } from "react-transition-group";
@@ -50,7 +50,7 @@ const DungeonInput = ({
     };
   }, [rangeSliderType]);
 
-  const handleBlur = e => {
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     if (!isFocusInside(e)) {
       setRangeSliderType(undefined);
     }

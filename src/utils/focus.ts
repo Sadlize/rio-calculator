@@ -1,10 +1,10 @@
-type TProps = {
-  relatedTarget: null | HTMLDivElement;
-  currentTarget: null;
-};
+import { FocusEvent } from "react";
 
-export const isFocusInside = ({ relatedTarget, currentTarget }: TProps) => {
-  const target = relatedTarget || document.activeElement;
+export const isFocusInside = ({
+  relatedTarget,
+  currentTarget,
+}: FocusEvent<HTMLInputElement>) => {
+  const target = (relatedTarget || document.activeElement) as HTMLInputElement;
   let node = target.parentNode;
 
   while (node !== null) {
