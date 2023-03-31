@@ -10,6 +10,7 @@ import { isInputValueNumber } from "utils/helpers";
 import { RootState, useAppDispatch, useAppSelector } from "redux/store";
 import { setDungeonScore } from "redux/slices";
 import { TDungeonKeys, TDungeonWeeks } from "utils/dungeons";
+import { isFocusInside } from "utils/focus";
 
 type TProps = {
   abbreviation: TDungeonKeys;
@@ -49,8 +50,14 @@ const DungeonInput = ({
     };
   }, [rangeSliderType]);
 
+  const handleBlur = e => {
+    if (!isFocusInside(e)) {
+      setRangeSliderType(undefined);
+    }
+  };
+
   return (
-    <div ref={$dungeonCardNode} className={styles.base}>
+    <div ref={$dungeonCardNode} className={styles.base} onBlur={handleBlur}>
       <h2>{dungeonName}</h2>
       <div className={styles.content}>
         <div className={styles.inputs}>
