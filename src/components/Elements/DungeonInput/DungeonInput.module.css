@@ -62,7 +62,7 @@
   align-items: center;
   justify-items: center;
 
-  input {
+  > input {
     width: 75px;
     height: 75px;
     border: 0;
@@ -72,12 +72,12 @@
     font-weight: 700;
     text-shadow: -1px -1px 1px color_Black, 1px -1px 1px color_Black, -1px 1px 1px color_Black, 1px 1px 1px color_Black;
 
-    &:nth-child(1) {
+    &:nth-of-type(1) {
       background-size: 100% 100%;
       background-image: url(https://media.discordapp.net/attachments/848667196400992317/1086995636219551805/wowmplusscore3_tyr.png?width=250&height=250);
     }
 
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       background-size: 100% 100%;
       background-image: url(https://media.discordapp.net/attachments/848667196400992317/1086995635921748018/wowmplusscore3_fort.png?width=250&height=250);
     }
@@ -104,7 +104,7 @@
   width: 100%;
   height: fit-content;
   position: absolute;
-  bottom: 0;
+  top: 100%;
   left: 0;
   z-index: 9;
   overflow: hidden;

@@ -1,16 +1,15 @@
 "use client";
 
 import styles from "./DungeonInput.module.css";
-import { useEffect, useRef, useState, FocusEvent } from "react";
+import { FocusEvent, useEffect, useRef, useState } from "react";
 import Image, { TDungeonImage } from "components/Elements/Image";
 import { checkClickOutsideRef } from "utils/checkClickOutsideRef";
-import { Transition } from "react-transition-group";
-import cx from "clsx";
 import { isInputValueNumber } from "utils/helpers";
 import { RootState, useAppDispatch, useAppSelector } from "redux/store";
 import { setDungeonScore } from "redux/slices";
 import { TDungeonKeys, TDungeonWeeks } from "utils/dungeons";
 import { isFocusInside } from "utils/focus";
+import TimestampSlider from "components/Elements/TimestampSlider";
 
 type TProps = {
   abbreviation: TDungeonKeys;
@@ -29,17 +28,16 @@ const DungeonInput = ({
   const tyrannicalKeyLevel = score.Tyrannical;
   const fortifiedKeyLevel = score.Fortified;
 
-  const [rangeSliderType, setRangeSliderType] = useState<
+  const [timestampSliderType, setTimestampSliderType] = useState<
     undefined | TDungeonWeeks
   >(undefined);
 
   const $dungeonCardNode = useRef(null);
-  const $timestampNode = useRef(null);
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (rangeSliderType) {
+      if (timestampSliderType) {
         if (checkClickOutsideRef(e, $dungeonCardNode)) {
-          setRangeSliderType(undefined);
+          setTimestampSliderType(undefined);
         }
       }
     };
@@ -48,11 +46,11 @@ const DungeonInput = ({
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [rangeSliderType]);
+  }, [timestampSliderType]);
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     if (!isFocusInside(e)) {
-      setRangeSliderType(undefined);
+      setTimestampSliderType(undefined);
     }
   };
 
@@ -66,7 +64,7 @@ const DungeonInput = ({
             placeholder={"0"}
             maxLength={2}
             onFocus={() => {
-              setRangeSliderType("Tyrannical");
+              setTimestampSliderType("Tyrannical");
             }}
             onChange={e => {
               if (isInputValueNumber(e.target.value)) {
@@ -80,12 +78,18 @@ const DungeonInput = ({
               }
             }}
           />
+          <TimestampSlider
+            type={timestampSliderType === "Tyrannical"}
+            minValue={-840400}
+            maxValue={840400}
+            step={16808}
+          />
           <input
             value={fortifiedKeyLevel || ""}
             placeholder={"0"}
             maxLength={2}
             onFocus={() => {
-              setRangeSliderType("Fortified");
+              setTimestampSliderType("Fortified");
             }}
             onChange={e => {
               if (isInputValueNumber(e.target.value)) {
@@ -99,31 +103,14 @@ const DungeonInput = ({
               }
             }}
           />
+          <TimestampSlider
+            type={timestampSliderType === "Fortified"}
+            minValue={-840400}
+            maxValue={840400}
+            step={16808}
+          />
         </div>
       </div>
-      <Transition
-        mountOnEnter
-        unmountOnExit
-        nodeRef={$timestampNode}
-        in={!!rangeSliderType}
-        timeout={{
-          appear: 0,
-          exit: 300,
-        }}
-      >
-        {status => (
-          <div
-            ref={$timestampNode}
-            className={cx(styles.timestamp, {
-              [styles.timestamp_show]: status === "entered",
-            })}
-          >
-            <input type="range" min="-840400" max="840400" step="16808" />
-            {/*{currentInputType === "Tyrannical" && 123}*/}
-            {/*{currentInputType === "Fortified" && 456}*/}
-          </div>
-        )}
-      </Transition>
       <div className={styles.background}>
         <Image
           priority
