@@ -25,8 +25,8 @@ const DungeonInput = ({
   const dispatch = useAppDispatch();
   const score = useAppSelector((state: RootState) => state.score[abbreviation]);
 
-  const tyrannicalKeyLevel = score.Tyrannical;
-  const fortifiedKeyLevel = score.Fortified;
+  const tyrannicalKeyLevel = score.Tyrannical.mythic_level;
+  const fortifiedKeyLevel = score.Fortified.mythic_level;
 
   const [timestampSliderType, setTimestampSliderType] = useState<
     undefined | TDungeonWeeks

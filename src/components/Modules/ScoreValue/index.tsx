@@ -1,7 +1,7 @@
 "use client";
 
 import { RootState, useAppSelector } from "redux/store";
-import { calcPointsForKeyLevel } from "utils/calcScoreForKeyLevel";
+import { TDungeonKeys } from "utils/dungeons";
 
 const ScoreValue = () => {
   const score = useAppSelector((state: RootState) => state.score);
@@ -10,16 +10,12 @@ const ScoreValue = () => {
   Object.keys(score).forEach(
     dungeon =>
       (sumDungeonScoreValues += [
-        score[dungeon].Tyrannical,
-        score[dungeon].Fortified,
+        score[dungeon as TDungeonKeys].Tyrannical.score || 0,
+        score[dungeon as TDungeonKeys].Fortified.score || 0,
       ]
         .sort((a, b) => b - a)
-        .reduce(
-          (a, b) =>
-            calcPointsForKeyLevel(a) * 1.5 + calcPointsForKeyLevel(b) * 0.5
-        ))
+        .reduce((a, b) => a * 1.5 + b * 0.5))
   );
-
   return <div style={{ color: "white" }}>{sumDungeonScoreValues}</div>;
 };
 

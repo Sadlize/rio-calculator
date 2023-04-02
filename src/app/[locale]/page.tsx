@@ -14,7 +14,6 @@ const Home = ({ params }: TParams) => {
         <div className={styles.header__items}>
           <LanguageSwitcher locale={locale} />
           <ScoreValue />
-          {/* @ts-expect-error Server Component */}
           <CharacterImport locale={locale} />
         </div>
       </header>
