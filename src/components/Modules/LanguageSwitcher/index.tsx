@@ -86,7 +86,7 @@ function LanguageSwitcher({ locale }: { locale: TLocale }) {
                     height={128}
                     alt={`${altLocale} flag`}
                   />
-                  {localeFullName[locale]}
+                  {localeFullName[altLocale]}
                 </Link>
               ))}
             </div>
