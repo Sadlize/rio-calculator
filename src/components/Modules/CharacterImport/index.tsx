@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { TLocale } from "@/projectSettings";
-import Button from "components/Elements/Button";
-import { getDictionary } from "utils/dictionaries";
-import { useAppDispatch } from "redux/store";
-import { TDungeonKeys, TDungeonObj, TDungeonWeeks } from "utils/dungeons";
-import { setCharacterImport } from "redux/slices";
+// import { TLocale } from '@/projectSettings';
+import Button from 'components/Elements/Button';
+// import { getDictionary } from 'utils/dictionaries';
+import { useAppDispatch } from 'redux/store';
+import { TDungeonKeys, TDungeonObj, TDungeonWeeks } from 'utils/dungeons';
+import { setCharacterImport } from 'redux/slices';
 
 async function getRIOData(
-  region = "eu",
-  realm = "tarrenmill",
-  name = "kotyatkie"
+  region = 'eu',
+  realm = 'tarrenmill',
+  name = 'kotyatkie',
 ) {
   const res = await fetch(
-    `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_best_runs%2Cmythic_plus_alternate_runs`
+    `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_best_runs%2Cmythic_plus_alternate_runs`,
   );
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data');
   }
 
   return res.json();
@@ -30,8 +30,8 @@ async function dataHandler() {
     ...data.mythic_plus_best_runs,
     ...data.mythic_plus_alternate_runs,
   ];
-  let bestScores = {} as TDungeonObj;
-  bestRuns.forEach(i => {
+  const bestScores = {} as TDungeonObj;
+  bestRuns.forEach((i) => {
     bestScores[i.short_name as TDungeonKeys] = {
       ...bestScores[i.short_name as TDungeonKeys],
       [i?.affixes[0].name as TDungeonWeeks]: {
@@ -47,8 +47,7 @@ async function dataHandler() {
   return bestScores;
 }
 
-const CharacterImport = ({ locale }: { locale: TLocale }) => {
-  // const dict = await getDictionary(locale);
+function CharacterImport() {
   const dispatch = useAppDispatch();
 
   return (
@@ -58,10 +57,9 @@ const CharacterImport = ({ locale }: { locale: TLocale }) => {
         dispatch(setCharacterImport(data));
       }}
     >
-      {/*{dict.Buttons.import}*/}
       Import
     </Button>
   );
-};
+}
 
 export default CharacterImport;

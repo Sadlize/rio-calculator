@@ -1,10 +1,9 @@
-"use client";
+'use client';
 
-export const checkClickOutsideRef = (
+const checkClickOutsideRef = (
   event: MouseEvent,
-  ref: { current: HTMLDivElement | null }
-): boolean => {
-  return !!(
-    ref.current && !ref.current.contains(event.target as HTMLDivElement)
-  );
-};
+  ref: { current: HTMLDivElement | null },
+): boolean =>
+  !!(ref.current && !ref.current.contains(event.target as HTMLDivElement));
+
+export default checkClickOutsideRef;

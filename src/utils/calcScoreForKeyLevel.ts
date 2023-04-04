@@ -8,16 +8,18 @@ const baseValues: { [key: number]: number } = {
 
 function getApproximateValue(level: number) {
   let value = 0;
-  for (const key of Object.keys(baseValues)) {
-    if (+key > level) {
-      return value;
+
+  Object.keys(baseValues).forEach((item) => {
+    if (+item > level) {
+      return;
     }
-    value = +key;
-  }
+    value = +item;
+  });
+
   return value;
 }
 
-export function calcPointsForKeyLevel(keyLevel: number) {
+function calcPointsForKeyLevel(keyLevel: number) {
   if (keyLevel < 2) {
     return 0;
   }
@@ -30,3 +32,5 @@ export function calcPointsForKeyLevel(keyLevel: number) {
 
   return base + keyLevel * 5;
 }
+
+export default calcPointsForKeyLevel;

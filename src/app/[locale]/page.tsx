@@ -1,12 +1,12 @@
-import styles from "../Page.module.css";
-import { TParams } from "./layout";
-import Calculator from "components/Modules/Calculator";
-import LanguageSwitcher from "components/Modules/LanguageSwitcher";
-import CharacterImport from "components/Modules/CharacterImport";
-import ScoreValue from "components/Modules/ScoreValue";
-import ReduxProvider from "redux/ReduxProvider";
+import Calculator from 'components/Modules/Calculator';
+import LanguageSwitcher from 'components/Modules/LanguageSwitcher';
+import CharacterImport from 'components/Modules/CharacterImport';
+import ScoreValue from 'components/Modules/ScoreValue';
+import ReduxProvider from 'redux/ReduxProvider';
+import styles from '../Page.module.css';
+import { TParams } from './layout';
 
-const Home = ({ params }: TParams) => {
+function Home({ params }: TParams) {
   const { locale } = params;
   return (
     <ReduxProvider>
@@ -14,7 +14,7 @@ const Home = ({ params }: TParams) => {
         <div className={styles.header__items}>
           <LanguageSwitcher locale={locale} />
           <ScoreValue />
-          <CharacterImport locale={locale} />
+          <CharacterImport />
         </div>
       </header>
       <main className={styles.main}>
@@ -23,6 +23,6 @@ const Home = ({ params }: TParams) => {
       </main>
     </ReduxProvider>
   );
-};
+}
 
 export default Home;

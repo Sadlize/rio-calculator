@@ -1,22 +1,23 @@
-"use client";
+'use client';
 
-import { RootState, useAppSelector } from "redux/store";
-import { TDungeonKeys } from "utils/dungeons";
+import { RootState, useAppSelector } from 'redux/store';
+import { TDungeonKeys } from 'utils/dungeons';
 
-const ScoreValue = () => {
+function ScoreValue() {
   const score = useAppSelector((state: RootState) => state.score);
-
-  let sumDungeonScoreValues = 0;
-  Object.keys(score).forEach(
-    dungeon =>
-      (sumDungeonScoreValues += [
+  const sumDungeonScoreValues = Object.keys(score).reduce(
+    (acc, dungeon) =>
+      acc +
+      [
         score[dungeon as TDungeonKeys].Tyrannical.score || 0,
         score[dungeon as TDungeonKeys].Fortified.score || 0,
       ]
         .sort((a, b) => b - a)
-        .reduce((a, b) => a * 1.5 + b * 0.5))
+        .reduce((a, b) => a * 1.5 + b * 0.5),
+    0,
   );
-  return <div style={{ color: "white" }}>{sumDungeonScoreValues}</div>;
-};
+
+  return <div style={{ color: 'white' }}>{sumDungeonScoreValues}</div>;
+}
 
 export default ScoreValue;

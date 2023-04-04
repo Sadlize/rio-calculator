@@ -1,22 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   dungeonMaxTimestamp,
   TDungeonKeys,
   TDungeonObj,
   TDungeonWeeks,
-} from "utils/dungeons";
-import { calcPointsForKeyLevel } from "utils/calcScoreForKeyLevel";
+} from 'utils/dungeons';
+import calcPointsForKeyLevel from 'utils/calcScoreForKeyLevel';
 
-const initialObj = Object.keys(dungeonMaxTimestamp).reduce((acc, dungeon) => {
-  return {
+const initialObj = Object.keys(dungeonMaxTimestamp).reduce(
+  (acc, dungeon) => ({
     ...acc,
     [dungeon]: {
       Tyrannical: { mythic_level: 0, score: 0 },
       Fortified: { mythic_level: 0, score: 0 },
     },
-  };
-}, {} as TDungeonObj);
+  }),
+  {} as TDungeonObj,
+);
 
 type TPayload = {
   amount: number;
@@ -25,7 +26,7 @@ type TPayload = {
 };
 
 export const scoreSlice = createSlice({
-  name: "score",
+  name: 'score',
   initialState: initialObj,
   reducers: {
     setDungeonScore(state, action: PayloadAction<TPayload>) {
@@ -51,14 +52,14 @@ export function setDungeonScore({
   week: TDungeonWeeks;
 }) {
   return {
-    type: "score/setDungeonScore",
+    type: 'score/setDungeonScore',
     payload: { amount, dungeon, week },
   };
 }
 
 export function setCharacterImport(data: TDungeonObj) {
   return {
-    type: "score/setCharacterImport",
+    type: 'score/setCharacterImport',
     payload: data,
   };
 }

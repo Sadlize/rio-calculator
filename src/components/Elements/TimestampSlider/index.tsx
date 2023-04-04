@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import cx from "clsx";
-import styles from "components/Elements/DungeonInput/DungeonInput.module.css";
-import { Transition } from "react-transition-group";
-import { useRef, useState } from "react";
+import cx from 'clsx';
+import styles from 'components/Elements/DungeonInput/DungeonInput.module.css';
+import { Transition } from 'react-transition-group';
+import { useRef, useState } from 'react';
 
 type TProps = {
   type: boolean;
@@ -12,7 +12,7 @@ type TProps = {
   step: number;
 };
 
-const TimestampSlider = ({ type, minValue, maxValue, step }: TProps) => {
+function TimestampSlider({ type, minValue, maxValue, step }: TProps) {
   const $timestampNode = useRef(null);
   const [timestampValue, setTimestampValue] = useState(0);
 
@@ -27,11 +27,11 @@ const TimestampSlider = ({ type, minValue, maxValue, step }: TProps) => {
         exit: 300,
       }}
     >
-      {status => (
+      {(status) => (
         <div
           ref={$timestampNode}
           className={cx(styles.timestamp, {
-            [styles.timestamp_show]: status === "entered",
+            [styles.timestamp_show]: status === 'entered',
           })}
         >
           <input
@@ -40,7 +40,7 @@ const TimestampSlider = ({ type, minValue, maxValue, step }: TProps) => {
             max={maxValue}
             step={step}
             value={timestampValue}
-            onChange={e => {
+            onChange={(e) => {
               setTimestampValue(+e.target.value);
             }}
           />
@@ -48,6 +48,6 @@ const TimestampSlider = ({ type, minValue, maxValue, step }: TProps) => {
       )}
     </Transition>
   );
-};
+}
 
 export default TimestampSlider;

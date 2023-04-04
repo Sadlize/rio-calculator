@@ -1,6 +1,6 @@
-import { FocusEvent } from "react";
+import { FocusEvent } from 'react';
 
-export const isFocusInside = ({
+const isFocusInside = ({
   relatedTarget,
   currentTarget,
 }: FocusEvent<HTMLInputElement>) => {
@@ -17,3 +17,5 @@ export const isFocusInside = ({
 
   return false;
 };
+
+export default isFocusInside;
