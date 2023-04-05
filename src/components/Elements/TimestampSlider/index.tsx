@@ -11,6 +11,7 @@ import {
 } from 'utils/dungeons';
 import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
 import { setTimestampScore } from 'redux/slices';
+import TimestampStars from 'components/Elements/TimestampStars';
 
 type TProps = {
   type: boolean;
@@ -48,6 +49,7 @@ function TimestampSlider({ type, dungeon, week }: TProps) {
             [styles.timestamp_show]: status === 'entered',
           })}
         >
+          <TimestampStars />
           <input
             type="range"
             min={timestampMinValue}

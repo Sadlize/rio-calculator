@@ -1,4 +1,5 @@
 @import "variables.css";
+@import "mixins.css";
 
 .base {
   width: 100%;
@@ -49,6 +50,7 @@
     width: 100%;
     height: 100%;
     filter: blur(0.05rem);
+    pointer-events: none;
   }
 }
 
@@ -105,18 +107,34 @@
   height: fit-content;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 9;
-  overflow: hidden;
+  /*overflow: hidden;*/
 
   & > input {
-    width: 70%;
-    margin: auto;
-    appearance: auto;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     opacity: 0;
     transform: translateY(100%);
     transition: transition_300 easeOutCubic;
     transition-property: opacity, transform;
+
+    &::-webkit-slider-runnable-track {
+      @extend .timestamp-track;
+    }
+
+    &::-moz-range-track {
+      @extend .timestamp-track;
+    }
+
+    &::-webkit-slider-thumb {
+      @extend .timestamp-thumb;
+    }
+    &::-moz-range-thumb {
+      @extend .timestamp-thumb;
+    }
   }
 
   &_show > input{
