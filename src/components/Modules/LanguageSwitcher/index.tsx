@@ -76,7 +76,9 @@ function LanguageSwitcher({ locale }: { locale: TLocale }) {
               {(altLocales || []).map((altLocale, index) => (
                 <Link
                   key={index}
-                  href={`./${altLocale}`}
+                  href={
+                    altLocale === i18n.defaultLocale ? './' : `./${altLocale}`
+                  }
                   className={styles.dropdown__content_item}
                 >
                   <Image
