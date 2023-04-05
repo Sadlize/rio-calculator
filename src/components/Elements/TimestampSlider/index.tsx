@@ -3,18 +3,32 @@
 import cx from 'clsx';
 import styles from 'components/Elements/DungeonInput/DungeonInput.module.css';
 import { Transition } from 'react-transition-group';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import {
+  dungeonMaxTimestamp,
+  TDungeonKeys,
+  TDungeonWeeks,
+} from 'utils/dungeons';
+import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
+import { setTimestampScore } from 'redux/slices';
 
 type TProps = {
   type: boolean;
-  minValue: number;
-  maxValue: number;
-  step: number;
+  dungeon: TDungeonKeys;
+  week: TDungeonWeeks;
 };
 
-function TimestampSlider({ type, minValue, maxValue, step }: TProps) {
+function TimestampSlider({ type, dungeon, week }: TProps) {
+  const score = useAppSelector((state: RootState) => state.score[dungeon]);
+
   const $timestampNode = useRef(null);
-  const [timestampValue, setTimestampValue] = useState(0);
+  const timestampCurrentValue =
+    dungeonMaxTimestamp[dungeon] - score[week].clearTimeMS;
+  const timestampMaxValue = Math.round(dungeonMaxTimestamp[dungeon] * 0.4);
+  const timestampMinValue = timestampMaxValue * -1;
+  const timestampStep = timestampMaxValue * 0.02;
+
+  const dispatch = useAppDispatch();
 
   return (
     <Transition
@@ -36,12 +50,19 @@ function TimestampSlider({ type, minValue, maxValue, step }: TProps) {
         >
           <input
             type="range"
-            min={minValue}
-            max={maxValue}
-            step={step}
-            value={timestampValue}
+            min={timestampMinValue}
+            max={timestampMaxValue}
+            step={timestampStep}
+            value={timestampCurrentValue}
             onChange={(e) => {
-              setTimestampValue(+e.target.value);
+              dispatch(
+                setTimestampScore({
+                  amount: +e.target.value,
+                  step: timestampStep,
+                  dungeon,
+                  week,
+                }),
+              );
             }}
           />
         </div>

@@ -12,8 +12,16 @@ const initialObj = Object.keys(dungeonMaxTimestamp).reduce(
   (acc, dungeon) => ({
     ...acc,
     [dungeon]: {
-      Tyrannical: { mythic_level: 0, score: 0 },
-      Fortified: { mythic_level: 0, score: 0 },
+      Tyrannical: {
+        keyLevel: 0,
+        score: 0,
+        clearTimeMS: dungeonMaxTimestamp[dungeon as TDungeonKeys],
+      },
+      Fortified: {
+        keyLevel: 0,
+        score: 0,
+        clearTimeMS: dungeonMaxTimestamp[dungeon as TDungeonKeys],
+      },
     },
   }),
   {} as TDungeonObj,
@@ -23,6 +31,7 @@ type TPayload = {
   amount: number;
   dungeon: TDungeonKeys;
   week: TDungeonWeeks;
+  step?: number;
 };
 
 export const scoreSlice = createSlice({
@@ -32,8 +41,22 @@ export const scoreSlice = createSlice({
     setDungeonScore(state, action: PayloadAction<TPayload>) {
       const { amount, dungeon, week } = action.payload;
       state[dungeon][week] = {
-        mythic_level: amount,
+        ...state[dungeon][week],
+        keyLevel: amount,
+        clearTimeMS: dungeonMaxTimestamp[dungeon],
         score: calcPointsForKeyLevel(amount),
+      };
+    },
+    setTimestampScore(state, action: PayloadAction<TPayload>) {
+      const { amount, step, dungeon, week } = action.payload;
+      state[dungeon][week] = {
+        ...state[dungeon][week],
+        clearTimeMS: dungeonMaxTimestamp[dungeon] - amount,
+        score: calcPointsForKeyLevel(
+          state[dungeon][week].keyLevel,
+          amount,
+          step,
+        ),
       };
     },
     setCharacterImport(state, action: PayloadAction<TDungeonObj>) {
@@ -54,6 +77,23 @@ export function setDungeonScore({
   return {
     type: 'score/setDungeonScore',
     payload: { amount, dungeon, week },
+  };
+}
+
+export function setTimestampScore({
+  amount,
+  step,
+  dungeon,
+  week,
+}: {
+  amount: number;
+  step: number;
+  dungeon: TDungeonKeys;
+  week: TDungeonWeeks;
+}) {
+  return {
+    type: 'score/setTimestampScore',
+    payload: { amount, step, dungeon, week },
   };
 }
 

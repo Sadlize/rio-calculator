@@ -19,18 +19,31 @@ function getApproximateValue(level: number) {
   return value;
 }
 
-function calcPointsForKeyLevel(keyLevel: number) {
+function calcPointsForKeyLevel(
+  keyLevel: number,
+  timestamp?: number,
+  step?: number,
+) {
   if (keyLevel < 2) {
     return 0;
   }
 
   const base = baseValues[getApproximateValue(keyLevel)];
+  let timeStampMultiplier = 0;
+  if (timestamp && step) {
+    timeStampMultiplier = timestamp / step;
+  }
+  let bonusTimeStampPoints = 0.1 * timeStampMultiplier;
+  if (timeStampMultiplier < 0) bonusTimeStampPoints -= 5;
 
   if (keyLevel >= 10) {
-    return base + (keyLevel - 10) * 7;
+    if (keyLevel >= 20 && timeStampMultiplier < 0) {
+      return 170 + bonusTimeStampPoints;
+    }
+    return base + (keyLevel - 10) * 7 + bonusTimeStampPoints;
   }
 
-  return base + keyLevel * 5;
+  return base + keyLevel * 5 + bonusTimeStampPoints;
 }
 
 export default calcPointsForKeyLevel;

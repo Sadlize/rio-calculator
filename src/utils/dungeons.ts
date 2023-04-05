@@ -16,11 +16,10 @@ export const dungeonMaxTimestamp = {
 export type TDungeonKeys = keyof typeof dungeonMaxTimestamp;
 export type TDungeonWeeks = 'Tyrannical' | 'Fortified';
 export type TDungeonStats = {
-  mythic_level?: number;
-  score?: number;
-  clear_time_ms?: number;
+  keyLevel: number;
+  score: number;
+  clearTimeMS: number;
   num_keystone_upgrades?: 0 | 1 | 2;
-  par_time_ms?: number;
 };
 export type TDungeonObj = {
   [dungeon in TDungeonKeys]: { [week in TDungeonWeeks]: TDungeonStats };

@@ -17,7 +17,13 @@ function ScoreValue() {
     0,
   );
 
-  return <div style={{ color: 'white' }}>{sumDungeonScoreValues}</div>;
+  return (
+    <div style={{ color: 'white' }}>
+      {Number.isInteger(sumDungeonScoreValues)
+        ? sumDungeonScoreValues
+        : sumDungeonScoreValues.toFixed(2)}
+    </div>
+  );
 }
 
 export default ScoreValue;

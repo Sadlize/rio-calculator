@@ -35,11 +35,10 @@ async function dataHandler() {
     bestScores[i.short_name as TDungeonKeys] = {
       ...bestScores[i.short_name as TDungeonKeys],
       [i?.affixes[0].name as TDungeonWeeks]: {
-        mythic_level: i.mythic_level,
-        num_keystone_upgrades: i.num_keystone_upgrades,
+        keyLevel: i.mythic_level,
+        // num_keystone_upgrades: i.num_keystone_upgrades,
         score: i.score,
-        par_time_ms: i.par_time_ms,
-        clear_time_ms: i.clear_time_ms,
+        clearTimeMS: i.clear_time_ms,
       },
     };
   });

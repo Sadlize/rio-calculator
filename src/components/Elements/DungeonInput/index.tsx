@@ -21,8 +21,8 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
   const dispatch = useAppDispatch();
   const score = useAppSelector((state: RootState) => state.score[abbreviation]);
 
-  const tyrannicalKeyLevel = score.Tyrannical.mythic_level;
-  const fortifiedKeyLevel = score.Fortified.mythic_level;
+  const tyrannicalKeyLevel = score.Tyrannical.keyLevel;
+  const fortifiedKeyLevel = score.Fortified.keyLevel;
 
   const [timestampSliderType, setTimestampSliderType] = useState<
     undefined | TDungeonWeeks
@@ -38,7 +38,6 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
       }
     };
     document.addEventListener('mousedown', handleClick);
-
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
@@ -76,9 +75,8 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
           />
           <TimestampSlider
             type={timestampSliderType === 'Tyrannical'}
-            minValue={-840400}
-            maxValue={840400}
-            step={16808}
+            dungeon={abbreviation}
+            week="Tyrannical"
           />
           <input
             value={fortifiedKeyLevel || ''}
@@ -101,9 +99,8 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
           />
           <TimestampSlider
             type={timestampSliderType === 'Fortified'}
-            minValue={-840400}
-            maxValue={840400}
-            step={16808}
+            dungeon={abbreviation}
+            week="Fortified"
           />
         </div>
       </div>
