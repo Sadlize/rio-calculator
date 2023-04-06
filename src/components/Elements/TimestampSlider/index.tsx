@@ -1,7 +1,6 @@
 'use client';
 
 import cx from 'clsx';
-import styles from 'components/Elements/DungeonInput/DungeonInput.module.css';
 import { Transition } from 'react-transition-group';
 import { useRef } from 'react';
 import {
@@ -12,14 +11,23 @@ import {
 import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
 import { setTimestampScore } from 'redux/slices';
 import TimestampStars from 'components/Elements/TimestampStars';
+import styles from './TimestampSlider.module.css';
 
 type TProps = {
   type: boolean;
   dungeon: TDungeonKeys;
   week: TDungeonWeeks;
+  setTimestampSliderType: React.Dispatch<
+    React.SetStateAction<undefined | TDungeonWeeks>
+  >;
 };
 
-function TimestampSlider({ type, dungeon, week }: TProps) {
+function TimestampSlider({
+  type,
+  dungeon,
+  week,
+  setTimestampSliderType,
+}: TProps) {
   const score = useAppSelector((state: RootState) => state.score[dungeon]);
 
   const $timestampNode = useRef(null);
@@ -43,30 +51,34 @@ function TimestampSlider({ type, dungeon, week }: TProps) {
       }}
     >
       {(status) => (
-        <div
-          ref={$timestampNode}
-          className={cx(styles.timestamp, {
-            [styles.timestamp_show]: status === 'entered',
-          })}
-        >
-          <TimestampStars />
-          <input
-            type="range"
-            min={timestampMinValue}
-            max={timestampMaxValue}
-            step={timestampStep}
-            value={timestampCurrentValue}
-            onChange={(e) => {
-              dispatch(
-                setTimestampScore({
-                  amount: +e.target.value,
-                  step: timestampStep,
-                  dungeon,
-                  week,
-                }),
-              );
-            }}
-          />
+        <div ref={$timestampNode} className={styles.base}>
+          <div
+            className={cx(styles.content, {
+              [styles.content_show]: status === 'entered',
+            })}
+          >
+            <TimestampStars />
+            <input
+              type="range"
+              min={timestampMinValue}
+              max={timestampMaxValue}
+              step={timestampStep}
+              value={timestampCurrentValue}
+              onBlur={() => {
+                setTimestampSliderType(undefined);
+              }}
+              onChange={(e) => {
+                dispatch(
+                  setTimestampScore({
+                    amount: +e.target.value,
+                    step: timestampStep,
+                    dungeon,
+                    week,
+                  }),
+                );
+              }}
+            />
+          </div>
         </div>
       )}
     </Transition>

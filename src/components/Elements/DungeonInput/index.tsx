@@ -1,14 +1,14 @@
 'use client';
 
-import { FocusEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image, { TDungeonImage } from 'components/Elements/Image';
 import checkClickOutsideRef from 'utils/checkClickOutsideRef';
 import isInputValueNumber from 'utils/helpers';
 import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
 import { setDungeonScore } from 'redux/slices';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
-import isFocusInside from 'utils/focus';
 import TimestampSlider from 'components/Elements/TimestampSlider';
+import cx from 'clsx';
 import styles from './DungeonInput.module.css';
 
 type TProps = {
@@ -43,14 +43,8 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
     };
   }, [timestampSliderType]);
 
-  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (!isFocusInside(e)) {
-      setTimestampSliderType(undefined);
-    }
-  };
-
   return (
-    <div ref={$dungeonCardNode} className={styles.base} onBlur={handleBlur}>
+    <div ref={$dungeonCardNode} className={styles.base}>
       <h2>{dungeonName}</h2>
       <div className={styles.content}>
         <div className={styles.inputs}>
@@ -60,6 +54,11 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
             maxLength={2}
             onFocus={() => {
               setTimestampSliderType('Tyrannical');
+            }}
+            onKeyDown={(e) => {
+              if (e.shiftKey && e.key === 'Tab') {
+                setTimestampSliderType(undefined);
+              }
             }}
             onChange={(e) => {
               if (isInputValueNumber(e.target.value)) {
@@ -77,6 +76,7 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
             type={timestampSliderType === 'Tyrannical'}
             dungeon={abbreviation}
             week="Tyrannical"
+            setTimestampSliderType={setTimestampSliderType}
           />
           <input
             value={fortifiedKeyLevel || ''}
@@ -101,8 +101,14 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
             type={timestampSliderType === 'Fortified'}
             dungeon={abbreviation}
             week="Fortified"
+            setTimestampSliderType={setTimestampSliderType}
           />
         </div>
+        <div
+          className={cx(styles.sliderPlaceholder, {
+            [styles.sliderPlaceholder_open]: timestampSliderType,
+          })}
+        />
       </div>
       <div className={styles.background}>
         <Image
