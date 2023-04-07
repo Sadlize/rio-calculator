@@ -10,7 +10,7 @@ import {
 } from 'utils/dungeons';
 import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
 import { setTimestampScore } from 'redux/slices';
-import TimestampStars from 'components/Elements/TimestampStars';
+import TimestampStars, { TStars } from 'components/Elements/TimestampStars';
 import styles from './TimestampSlider.module.css';
 
 type TProps = {
@@ -36,8 +36,14 @@ function TimestampSlider({
   const timestampMaxValue = Math.round(dungeonMaxTimestamp[dungeon] * 0.4);
   const timestampMinValue = timestampMaxValue * -1;
   const timestampStep = timestampMaxValue * 0.02;
-
   const dispatch = useAppDispatch();
+
+  const currentStar = ([
+    timestampMinValue,
+    0,
+    timestampMaxValue / 2,
+    timestampMaxValue,
+  ].filter((i) => i <= timestampCurrentValue).length - 1) as TStars;
 
   return (
     <Transition
@@ -57,7 +63,18 @@ function TimestampSlider({
               [styles.content_show]: status === 'entered',
             })}
           >
-            <TimestampStars />
+            <TimestampStars
+              currentStar={currentStar}
+              dungeon={dungeon}
+              week={week}
+              starTimers={[
+                timestampMinValue,
+                0,
+                timestampMaxValue / 2,
+                timestampMaxValue,
+              ]}
+              timestampStep={timestampStep}
+            />
             <input
               type="range"
               min={timestampMinValue}

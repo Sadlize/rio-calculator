@@ -39,15 +39,21 @@
   background: linear-gradient(to right, mediumorchid 50%, orchid 50%);
   border-radius: 50%;
   pointer-events: none;
+
+  &_active {
+    background: red;
+  }
 }
 
+/*
 .container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 .container input:checked ~ .checkmark {
   background-color: #2196F3;
-}
+}*/
+
 /*
 .checkmark:after {
   content: "";
