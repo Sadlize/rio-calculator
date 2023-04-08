@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image, { TDungeonImage } from 'components/Elements/Image';
 import checkClickOutsideRef from 'utils/checkClickOutsideRef';
-import isInputValueNumber from 'utils/helpers';
+import { isInputValueNumber } from 'utils/helpers';
 import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
 import { setDungeonScore } from 'redux/slices';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';

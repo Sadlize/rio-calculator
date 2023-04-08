@@ -1,4 +1,5 @@
-const isInputValueNumber = (value: number | string): boolean =>
+export const isInputValueNumber = (value: number | string): boolean =>
   !Number.isNaN(+value);
 
-export default isInputValueNumber;
+export const createArrayWithLength = (length: number): Array<number> =>
+  Array.from(Array(length).keys());
