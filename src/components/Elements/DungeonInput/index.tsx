@@ -49,6 +49,9 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
       <div className={styles.content}>
         <div className={styles.inputs}>
           <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={tyrannicalKeyLevel || ''}
             placeholder="0"
             maxLength={2}
@@ -79,6 +82,9 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
             setTimestampSliderType={setTimestampSliderType}
           />
           <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={fortifiedKeyLevel || ''}
             placeholder="0"
             maxLength={2}
