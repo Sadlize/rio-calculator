@@ -44,7 +44,7 @@ function TimestampStars({
           />
           <span
             className={cx(styles.checkmark, {
-              [styles.checkmark_active]: currentStar >= item,
+              [styles.checkmark_active]: currentStar >= item && item !== 0,
             })}
           />
         </div>
