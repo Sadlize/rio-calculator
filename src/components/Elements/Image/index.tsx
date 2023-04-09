@@ -10,17 +10,19 @@ type TProps = {
   layout?: string;
   alt: string;
   className?: string;
-  blurDataUrl?: string | undefined;
+  blurDataUrl?: string;
 };
 
-export type TDungeonImage = Pick<TProps, 'src' | 'alt' | 'blurDataUrl'>;
+export type TDungeonImage = Required<
+  Pick<TProps, 'src' | 'alt' | 'blurDataUrl'>
+>;
 
 function Image({
   priority,
   src,
   width,
   height,
-  layout = undefined,
+  layout,
   alt,
   className,
   blurDataUrl,
