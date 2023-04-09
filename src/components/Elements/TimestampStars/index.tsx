@@ -2,7 +2,7 @@ import cx from 'clsx';
 import { useAppDispatch } from 'redux/store';
 import { setTimestampScore } from 'redux/slices';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
-import { createArrayWithLength } from 'utils/helpers';
+import { jsxRepeatCode } from 'utils/helpers';
 import styles from './TimestampStars.module.css';
 
 export type TStars = 0 | 1 | 2 | 3;
@@ -26,7 +26,7 @@ function TimestampStars({
 
   return (
     <div className={styles.base}>
-      {createArrayWithLength(4).map((item) => (
+      {jsxRepeatCode(4).map((item) => (
         <div key={item} className={styles.container}>
           <input
             type="radio"
