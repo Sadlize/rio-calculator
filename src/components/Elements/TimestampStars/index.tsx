@@ -56,44 +56,5 @@ const TimestampStars = memo(
   },
   (prevProps, nextProps) => prevProps.currentStar === nextProps.currentStar,
 );
-//
-// // eslint-disable-next-line
-// const TimestampStars2 = memo(function TimestampStars2({
-//   currentStar,
-//   dungeon,
-//   week,
-//   starTimers,
-//   timestampStep,
-// }: TProps) {
-//   // const dispatch = useAppDispatch();
-//   console.log('Greeting was rendered at', new Date().toLocaleTimeString());
-//   return (
-//     <div className={styles.base}>
-//       {jsxRepeatCode(4).map((item) => (
-//         <div key={item} className={styles.container}>
-//           <input
-//             type="radio"
-//             name={`${item}`}
-//             // onClick={() => {
-//             //   dispatch(
-//             //     setTimestampScore({
-//             //       amount: starTimers[item],
-//             //       step: timestampStep,
-//             //       dungeon,
-//             //       week,
-//             //     }),
-//             //   );
-//             // }}
-//           />
-//           <span
-//             className={cx(styles.checkmark, {
-//               [styles.checkmark_active]: currentStar >= item && item !== 0,
-//             })}
-//           />
-//         </div>
-//       ))}
-//     </div>
-//   );
-// });
 
 export default TimestampStars;
