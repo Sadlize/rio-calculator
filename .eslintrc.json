@@ -10,6 +10,7 @@
   "plugins": ["@typescript-eslint"],
   "root": true,
   "rules": {
+    "prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
     "no-console": ["error", { "allow": ["warn"] }],
     "react/require-default-props": "off",
     "no-unused-vars": "off",
