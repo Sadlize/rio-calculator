@@ -1,60 +1,40 @@
 import cx from 'clsx';
-import { useAppDispatch } from 'redux/store';
-import { setTimestampScore } from 'redux/slices';
+import { useAppDispatch, useAppSelector } from 'redux/store';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
 import { jsxRepeatCode } from 'utils/helpers';
 import { memo } from 'react';
+import { setStarNumber } from 'redux/slices/starSlice';
 import styles from './TimestampStars.module.css';
 
-export type TStars = 0 | 1 | 2 | 3;
-
 type TProps = {
-  currentStar: TStars;
   dungeon: TDungeonKeys;
   week: TDungeonWeeks;
-  starTimers: Array<number>;
-  timestampStep: number;
 };
 
-const TimestampStars = memo(
-  function TimestampStars({
-    currentStar,
-    dungeon,
-    week,
-    starTimers,
-    timestampStep,
-  }: TProps) {
-    const dispatch = useAppDispatch();
+const TimestampStars = memo(function TimestampStars({ dungeon, week }: TProps) {
+  const dispatch = useAppDispatch();
+  const stars = useAppSelector((state) => state.stars[dungeon][week]);
 
-    return (
-      <div className={styles.base}>
-        {jsxRepeatCode(4).map((item) => (
-          <div key={item} className={styles.container}>
-            <input
-              type="radio"
-              name={`${item}`}
-              onClick={() => {
-                dispatch(
-                  setTimestampScore({
-                    amount: starTimers[item],
-                    step: timestampStep,
-                    dungeon,
-                    week,
-                  }),
-                );
-              }}
-            />
-            <span
-              className={cx(styles.checkmark, {
-                [styles.checkmark_active]: currentStar >= item && item !== 0,
-              })}
-            />
-          </div>
-        ))}
-      </div>
-    );
-  },
-  (prevProps, nextProps) => prevProps.currentStar === nextProps.currentStar,
-);
+  return (
+    <div className={styles.base}>
+      {jsxRepeatCode(4).map((item) => (
+        <div key={item} className={styles.container}>
+          <input
+            type="radio"
+            name={`${item}`}
+            onClick={() => {
+              dispatch(setStarNumber({ amount: item, dungeon, week }));
+            }}
+          />
+          <span
+            className={cx(styles.checkmark, {
+              [styles.checkmark_active]: stars >= item && item !== 0,
+            })}
+          />
+        </div>
+      ))}
+    </div>
+  );
+});
 
 export default TimestampStars;

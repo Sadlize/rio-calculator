@@ -1,10 +1,10 @@
 'use client';
 
-import { RootState, useAppSelector } from 'redux/store';
+import { useAppSelector } from 'redux/store';
 import { TDungeonKeys } from 'utils/dungeons';
 
 function ScoreValue() {
-  const score = useAppSelector((state: RootState) => state.score);
+  const score = useAppSelector((state) => state.score);
   const sumDungeonScoreValues = Object.keys(score).reduce(
     (acc, dungeon) =>
       acc +

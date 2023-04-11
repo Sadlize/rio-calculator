@@ -1,4 +1,4 @@
-import DungeonInput from 'components/Elements/DungeonInput';
+import DungeonInput from 'components/Modules/DungeonCard';
 import { TLocale } from '@/projectSettings';
 import { getDungeons } from 'utils/dungeons';
 import styles from './Calculator.module.css';

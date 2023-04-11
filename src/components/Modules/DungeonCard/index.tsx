@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import Image, { TDungeonImage } from 'components/Elements/Image';
 import checkClickOutsideRef from 'utils/checkClickOutsideRef';
 import { isInputValueNumber } from 'utils/helpers';
-import { RootState, useAppDispatch, useAppSelector } from 'redux/store';
+import { useAppDispatch, useAppSelector } from 'redux/store';
 import { setDungeonScore } from 'redux/slices';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
-import TimestampSlider from 'components/Elements/TimestampSlider';
+import Timestamp from 'components/Modules/Timestamp';
 import cx from 'clsx';
-import styles from './DungeonInput.module.css';
+import { setTimestampValue } from 'redux/slices/timestampSlice';
+import styles from './DungeonCard.module.css';
 
 type TProps = {
   abbreviation: TDungeonKeys;
@@ -17,9 +18,8 @@ type TProps = {
   imgBackground: TDungeonImage;
 };
 
-function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
-  const dispatch = useAppDispatch();
-  const score = useAppSelector((state: RootState) => state.score[abbreviation]);
+function DungeonCard({ abbreviation, dungeonName, imgBackground }: TProps) {
+  const score = useAppSelector((state) => state.score[abbreviation]);
 
   const tyrannicalKeyLevel = score.Tyrannical.keyLevel;
   const fortifiedKeyLevel = score.Fortified.keyLevel;
@@ -43,6 +43,26 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
     };
   }, [timestampSliderType]);
 
+  const dispatch = useAppDispatch();
+  function onChangeInputHandler(value: number, week: TDungeonWeeks): void {
+    if (isInputValueNumber(value)) {
+      dispatch(
+        setDungeonScore({
+          value,
+          dungeon: abbreviation,
+          week,
+        }),
+      );
+      dispatch(
+        setTimestampValue({
+          value: 0,
+          dungeon: abbreviation,
+          week,
+        }),
+      );
+    }
+  }
+
   return (
     <div ref={$dungeonCardNode} className={styles.base}>
       <h2>{dungeonName}</h2>
@@ -64,18 +84,10 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
               }
             }}
             onChange={(e) => {
-              if (isInputValueNumber(e.target.value)) {
-                dispatch(
-                  setDungeonScore({
-                    amount: +e.target.value,
-                    dungeon: abbreviation,
-                    week: 'Tyrannical',
-                  }),
-                );
-              }
+              onChangeInputHandler(+e.target.value, 'Tyrannical');
             }}
           />
-          <TimestampSlider
+          <Timestamp
             type={timestampSliderType === 'Tyrannical'}
             dungeon={abbreviation}
             week="Tyrannical"
@@ -92,18 +104,10 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
               setTimestampSliderType('Fortified');
             }}
             onChange={(e) => {
-              if (isInputValueNumber(e.target.value)) {
-                dispatch(
-                  setDungeonScore({
-                    amount: +e.target.value,
-                    dungeon: abbreviation,
-                    week: 'Fortified',
-                  }),
-                );
-              }
+              onChangeInputHandler(+e.target.value, 'Fortified');
             }}
           />
-          <TimestampSlider
+          <Timestamp
             type={timestampSliderType === 'Fortified'}
             dungeon={abbreviation}
             week="Fortified"
@@ -129,4 +133,4 @@ function DungeonInput({ abbreviation, dungeonName, imgBackground }: TProps) {
   );
 }
 
-export default DungeonInput;
+export default DungeonCard;

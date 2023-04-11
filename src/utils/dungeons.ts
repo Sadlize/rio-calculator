@@ -18,8 +18,6 @@ export type TDungeonWeeks = 'Tyrannical' | 'Fortified';
 export type TDungeonStats = {
   keyLevel: number;
   score: number;
-  clearTimeMS: number;
-  num_keystone_upgrades?: 0 | 1 | 2;
 };
 export type TDungeonObj = {
   [dungeon in TDungeonKeys]: { [week in TDungeonWeeks]: TDungeonStats };
