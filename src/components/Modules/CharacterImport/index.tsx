@@ -3,76 +3,37 @@
 // import { TLocale } from '@/projectSettings';
 import Button from 'components/Elements/Button';
 // import { getDictionary } from 'utils/dictionaries';
-import { useAppDispatch } from 'redux/store';
-import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
-import { TInitialObj } from 'redux/slices';
-import { setImportScore } from 'redux/slices/scoreSlice';
-import { setImportKeyLevel } from 'redux/slices/keyLevelSlice';
-import { setImportTimestamp } from 'redux/slices/timestampSlice';
+import { Transition } from 'react-transition-group';
+import { useRef, useState } from 'react';
+import ImportForm from 'components/Modules/ImportForm';
 
-async function getRIOData(
-  region = 'eu',
-  realm = 'tarrenmill',
-  name = 'kotyatkie',
-) {
-  const res = await fetch(
-    `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_best_runs%2Cmythic_plus_alternate_runs`,
-  );
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
-
-async function refactorRIODataHandler() {
-  const data = await getRIOData();
-  const bestRuns = [
-    ...data.mythic_plus_best_runs,
-    ...data.mythic_plus_alternate_runs,
-  ];
-  const bestScores = {
-    scores: {} as TInitialObj,
-    keyLevels: {} as TInitialObj,
-    timestamps: {} as TInitialObj,
-  };
-
-  bestRuns.forEach((i) => {
-    const dungeon = i.short_name as TDungeonKeys;
-    const weeklyAffix = i?.affixes[0].name as TDungeonWeeks;
-    bestScores.scores[dungeon] = {
-      ...bestScores.scores[dungeon],
-      [weeklyAffix]: i.score,
-    };
-    bestScores.keyLevels[dungeon] = {
-      ...bestScores.keyLevels[dungeon],
-      [weeklyAffix]: i.mythic_level,
-    };
-    bestScores.timestamps[dungeon] = {
-      ...bestScores.timestamps[dungeon],
-      [weeklyAffix]: i.clear_time_ms,
-    };
-  });
-
-  return bestScores;
-}
-
-function CharacterImport() {
-  const dispatch = useAppDispatch();
+// TODO: change translation type
+function CharacterImport({ translations }: { translations: any }) {
+  const $importMenuNode = useRef(null);
+  const [importMenuOpen, setImportMenuOpen] = useState(false);
 
   return (
-    <Button
-      onClick={async () => {
-        const data = await refactorRIODataHandler();
-        dispatch(setImportScore(data.scores));
-        dispatch(setImportKeyLevel(data.keyLevels));
-        dispatch(setImportTimestamp(data.timestamps));
-      }}
-    >
-      Import
-    </Button>
+    <>
+      <Button
+        onClick={() => {
+          setImportMenuOpen(!importMenuOpen);
+        }}
+      >
+        {translations.Buttons.import}
+      </Button>
+      <Transition
+        mountOnEnter
+        unmountOnExit
+        nodeRef={$importMenuNode}
+        in={importMenuOpen}
+        timeout={{
+          appear: 0,
+          exit: 300,
+        }}
+      >
+        {(status) => <ImportForm Ref={$importMenuNode} status={status} />}
+      </Transition>
+    </>
   );
 }
 
