@@ -22,7 +22,7 @@ function getApproximateValue(level: number) {
 function calcScoreForKeyLevel(keyLevel: number, deplete?: boolean): number {
   const base = baseValues[getApproximateValue(keyLevel)];
 
-  if (keyLevel >= 10 && keyLevel < 20) {
+  if (keyLevel >= 10) {
     if (deplete && keyLevel >= 20) {
       return 170;
     }

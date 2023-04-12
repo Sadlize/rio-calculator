@@ -29,7 +29,7 @@ const scoreSlice = createSlice({
       if (timeStampMultiplier < 0) bonusTimeStampPoints -= 5;
 
       state[dungeon][week] =
-        calcScoreForKeyLevel(keyLevel, !!timeStampMultiplier) +
+        calcScoreForKeyLevel(keyLevel, timeStampMultiplier < 0) +
         bonusTimeStampPoints;
     },
     setImportScore(state, action: PayloadAction<TInitialObj>) {
