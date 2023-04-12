@@ -62,7 +62,7 @@ function TimestampSlider({ dungeon, week, setTimestampSliderType }: TProps) {
       min={minValue}
       max={maxValue}
       step={step}
-      value={currentValue}
+      value={currentValue || '0'}
       onBlur={() => {
         setTimestampSliderType(undefined);
       }}

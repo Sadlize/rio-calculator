@@ -1,7 +1,11 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import { dungeonMaxTimestamp } from 'utils/dungeons';
-import { getInitialSliceObject, TPayloadValue } from 'redux/slices/index';
+import {
+  getInitialSliceObject,
+  TInitialObj,
+  TPayloadValue,
+} from 'redux/slices/index';
 
 const initialObj = getInitialSliceObject({});
 
@@ -13,6 +17,9 @@ const timestampSlice = createSlice({
       const { value, dungeon, week } = action.payload;
       state[dungeon][week] = dungeonMaxTimestamp[dungeon] - value;
     },
+    setImportTimestamp(state, action: PayloadAction<TInitialObj>) {
+      return { ...action.payload };
+    },
   },
 });
 
@@ -22,5 +29,12 @@ export function setTimestampValue({ value, dungeon, week }: TPayloadValue) {
   return {
     type: 'timestamp/setTimestampValue',
     payload: { value, dungeon, week },
+  };
+}
+
+export function setImportTimestamp(data: TInitialObj) {
+  return {
+    type: 'timestamp/setImportTimestamp',
+    payload: data,
   };
 }

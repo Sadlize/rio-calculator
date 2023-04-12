@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import calcScoreForKeyLevel from 'utils/calcScoreForKeyLevel';
-import { getInitialSliceObject, TPayloadScore } from 'redux/slices/index';
+import {
+  getInitialSliceObject,
+  TInitialObj,
+  TPayloadScore,
+} from 'redux/slices/index';
 import { dungeonMaxTimestamp } from 'utils/dungeons';
 
 const initialObj = getInitialSliceObject(0);
@@ -28,6 +32,9 @@ const scoreSlice = createSlice({
         calcScoreForKeyLevel(keyLevel, !!timeStampMultiplier) +
         bonusTimeStampPoints;
     },
+    setImportScore(state, action: PayloadAction<TInitialObj>) {
+      return { ...action.payload };
+    },
   },
 });
 
@@ -42,5 +49,12 @@ export function setScoreValue({
   return {
     type: 'score/setScoreValue',
     payload: { keyLevel, timestamp, dungeon, week },
+  };
+}
+
+export function setImportScore(data: TInitialObj) {
+  return {
+    type: 'score/setImportScore',
+    payload: data,
   };
 }

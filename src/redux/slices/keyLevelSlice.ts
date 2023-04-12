@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getInitialSliceObject, TPayloadValue } from 'redux/slices/index';
+import {
+  getInitialSliceObject,
+  TInitialObj,
+  TPayloadValue,
+} from 'redux/slices/index';
 
 const initialObj = getInitialSliceObject(0);
 
@@ -11,9 +15,9 @@ const keyLevelSlice = createSlice({
       const { value, dungeon, week } = action.payload;
       state[dungeon][week] = value;
     },
-    // setCharacterImport(state, action: PayloadAction<TDungeonObj>) {
-    //   return { ...action.payload };
-    // },
+    setImportKeyLevel(state, action: PayloadAction<TInitialObj>) {
+      return { ...action.payload };
+    },
   },
 });
 
@@ -23,5 +27,12 @@ export function setKeyLevelValue({ value, dungeon, week }: TPayloadValue) {
   return {
     type: 'keyLevel/setKeyLevelValue',
     payload: { value, dungeon, week },
+  };
+}
+
+export function setImportKeyLevel(data: TInitialObj) {
+  return {
+    type: 'keyLevel/setImportKeyLevel',
+    payload: data,
   };
 }
