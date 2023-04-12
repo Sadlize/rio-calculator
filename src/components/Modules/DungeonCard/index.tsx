@@ -5,11 +5,12 @@ import Image, { TDungeonImage } from 'components/Elements/Image';
 import checkClickOutsideRef from 'utils/checkClickOutsideRef';
 import { isInputValueNumber } from 'utils/helpers';
 import { useAppDispatch, useAppSelector } from 'redux/store';
-import { setDungeonScore } from 'redux/slices';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
 import Timestamp from 'components/Modules/Timestamp';
 import cx from 'clsx';
 import { setTimestampValue } from 'redux/slices/timestampSlice';
+import { setKeyLevelValue } from 'redux/slices/keyLevelSlice';
+import { setScoreValue } from 'redux/slices/scoreSlice';
 import styles from './DungeonCard.module.css';
 
 type TProps = {
@@ -19,10 +20,10 @@ type TProps = {
 };
 
 function DungeonCard({ abbreviation, dungeonName, imgBackground }: TProps) {
-  const score = useAppSelector((state) => state.score[abbreviation]);
+  const keyLevels = useAppSelector((state) => state.keyLevels[abbreviation]);
 
-  const tyrannicalKeyLevel = score.Tyrannical.keyLevel;
-  const fortifiedKeyLevel = score.Fortified.keyLevel;
+  const tyrannicalKeyLevel = keyLevels.Tyrannical;
+  const fortifiedKeyLevel = keyLevels.Fortified;
 
   const [timestampSliderType, setTimestampSliderType] = useState<
     undefined | TDungeonWeeks
@@ -47,8 +48,15 @@ function DungeonCard({ abbreviation, dungeonName, imgBackground }: TProps) {
   function onChangeInputHandler(value: number, week: TDungeonWeeks): void {
     if (isInputValueNumber(value)) {
       dispatch(
-        setDungeonScore({
+        setKeyLevelValue({
           value,
+          dungeon: abbreviation,
+          week,
+        }),
+      );
+      dispatch(
+        setScoreValue({
+          keyLevel: value,
           dungeon: abbreviation,
           week,
         }),

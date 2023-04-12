@@ -4,6 +4,8 @@ import useTimestamp from 'hooks/useTimestamp';
 import { setStarNumber } from 'redux/slices/starSlice';
 import { setTimestampValue } from 'redux/slices/timestampSlice';
 import { useCallback, useEffect } from 'react';
+import { TStarNumber } from 'redux/slices';
+import { setScoreValue } from 'redux/slices/scoreSlice';
 
 type TProps = {
   dungeon: TDungeonKeys;
@@ -19,13 +21,14 @@ function TimestampSlider({ dungeon, week, setTimestampSliderType }: TProps) {
     week,
   );
   const stars = useAppSelector((state) => state.stars[dungeon][week]);
+  const keyLevel = useAppSelector((state) => state.keyLevels[dungeon][week]);
 
   const dispatch = useAppDispatch();
   const dispatchStars = useCallback(
-    function dispatchStars(number: number) {
+    function dispatchStars(number: TStarNumber) {
       dispatch(
         setStarNumber({
-          amount: number,
+          number,
           dungeon,
           week,
         }),
@@ -68,6 +71,14 @@ function TimestampSlider({ dungeon, week, setTimestampSliderType }: TProps) {
         dispatch(
           setTimestampValue({
             value,
+            dungeon,
+            week,
+          }),
+        );
+        dispatch(
+          setScoreValue({
+            keyLevel,
+            timestamp: value,
             dungeon,
             week,
           }),

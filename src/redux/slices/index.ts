@@ -1,73 +1,48 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   dungeonMaxTimestamp,
   TDungeonKeys,
-  TDungeonObj,
   TDungeonWeeks,
 } from 'utils/dungeons';
-import calcPointsForKeyLevel from 'utils/calcScoreForKeyLevel';
 
-const initialObj = Object.keys(dungeonMaxTimestamp).reduce(
-  (acc, dungeon) => ({
-    ...acc,
-    [dungeon]: {
-      Tyrannical: {
-        keyLevel: 0,
-        score: 0,
-      },
-      Fortified: {
-        keyLevel: 0,
-        score: 0,
-      },
-    },
-  }),
-  {} as TDungeonObj,
-);
+export type TStarNumber = 0 | 1 | 2 | 3;
 
-type TPayload = {
-  value: number;
+type TPayloadBase = {
   dungeon: TDungeonKeys;
   week: TDungeonWeeks;
-  step?: number;
 };
 
-export const scoreSlice = createSlice({
-  name: 'score',
-  initialState: initialObj,
-  reducers: {
-    setDungeonScore(state, action: PayloadAction<TPayload>) {
-      const { value, dungeon, week } = action.payload;
-      state[dungeon][week] = {
-        ...state[dungeon][week],
-        keyLevel: value,
-        score: calcPointsForKeyLevel(value),
-      };
-    },
-    setCharacterImport(state, action: PayloadAction<TDungeonObj>) {
-      return { ...action.payload };
-    },
-  },
-});
-
-export function setDungeonScore({
-  value,
-  dungeon,
-  week,
-}: {
+export type TPayloadValue = TPayloadBase & {
   value: number;
-  dungeon: TDungeonKeys;
-  week: TDungeonWeeks;
-}) {
-  return {
-    type: 'score/setDungeonScore',
-    payload: { value, dungeon, week },
-  };
-}
+};
 
-export function setCharacterImport(data: TDungeonObj) {
-  return {
-    type: 'score/setCharacterImport',
-    payload: data,
-  };
+export type TPayloadStars = TPayloadBase & {
+  number: TStarNumber;
+};
+
+export type TPayloadScore = TPayloadBase & {
+  keyLevel: number;
+  timestamp?: number;
+};
+
+export type TInitialObj = {
+  [dungeon in TDungeonKeys]: { [week in TDungeonWeeks]: number };
+};
+
+export function getInitialSliceObject(value: number | object): TInitialObj {
+  return Object.keys(dungeonMaxTimestamp).reduce(
+    (acc, dungeon) => ({
+      ...acc,
+      [dungeon]: {
+        Tyrannical:
+          typeof value === 'object'
+            ? dungeonMaxTimestamp[dungeon as TDungeonKeys]
+            : value,
+        Fortified:
+          typeof value === 'object'
+            ? dungeonMaxTimestamp[dungeon as TDungeonKeys]
+            : value,
+      },
+    }),
+    {} as TInitialObj,
+  );
 }

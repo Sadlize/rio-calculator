@@ -4,6 +4,7 @@ import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
 import { jsxRepeatCode } from 'utils/helpers';
 import { memo } from 'react';
 import { setStarNumber } from 'redux/slices/starSlice';
+import { TStarNumber } from 'redux/slices';
 import styles from './TimestampStars.module.css';
 
 type TProps = {
@@ -13,22 +14,24 @@ type TProps = {
 
 const TimestampStars = memo(function TimestampStars({ dungeon, week }: TProps) {
   const dispatch = useAppDispatch();
-  const stars = useAppSelector((state) => state.stars[dungeon][week]);
+  const currentStar = useAppSelector((state) => state.stars[dungeon][week]);
 
   return (
     <div className={styles.base}>
-      {jsxRepeatCode(4).map((item) => (
-        <div key={item} className={styles.container}>
+      {jsxRepeatCode(4).map((star) => (
+        <div key={star} className={styles.container}>
           <input
             type="radio"
-            name={`${item}`}
+            name={`${star}`}
             onClick={() => {
-              dispatch(setStarNumber({ amount: item, dungeon, week }));
+              dispatch(
+                setStarNumber({ number: star as TStarNumber, dungeon, week }),
+              );
             }}
           />
           <span
             className={cx(styles.checkmark, {
-              [styles.checkmark_active]: stars >= item && item !== 0,
+              [styles.checkmark_active]: currentStar >= star && star !== 0,
             })}
           />
         </div>

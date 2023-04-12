@@ -4,13 +4,13 @@ import { useAppSelector } from 'redux/store';
 import { TDungeonKeys } from 'utils/dungeons';
 
 function ScoreValue() {
-  const score = useAppSelector((state) => state.score);
-  const sumDungeonScoreValues = Object.keys(score).reduce(
+  const scores = useAppSelector((state) => state.scores);
+  const sumDungeonScoreValues = Object.keys(scores).reduce(
     (acc, dungeon) =>
       acc +
       [
-        score[dungeon as TDungeonKeys].Tyrannical.score || 0,
-        score[dungeon as TDungeonKeys].Fortified.score || 0,
+        scores[dungeon as TDungeonKeys].Tyrannical || 0,
+        scores[dungeon as TDungeonKeys].Fortified || 0,
       ]
         .sort((a, b) => b - a)
         .reduce((a, b) => a * 1.5 + b * 0.5),

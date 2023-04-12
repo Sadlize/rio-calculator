@@ -1,50 +1,24 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  dungeonMaxTimestamp,
-  TDungeonKeys,
-  TDungeonWeeks,
-} from 'utils/dungeons';
+import { dungeonMaxTimestamp } from 'utils/dungeons';
+import { getInitialSliceObject, TPayloadValue } from 'redux/slices/index';
 
-const initialObj = Object.keys(dungeonMaxTimestamp).reduce(
-  (acc, dungeon) => ({
-    ...acc,
-    [dungeon]: {
-      Tyrannical: dungeonMaxTimestamp[dungeon as TDungeonKeys],
-      Fortified: dungeonMaxTimestamp[dungeon as TDungeonKeys],
-    },
-  }),
-  {} as {
-    [dungeon in TDungeonKeys]: { [week in TDungeonWeeks]: number };
-  },
-);
+const initialObj = getInitialSliceObject({});
 
-type TPayload = {
-  value: number;
-  dungeon: TDungeonKeys;
-  week: TDungeonWeeks;
-};
-
-export const timestampSlice = createSlice({
+const timestampSlice = createSlice({
   name: 'timestamp',
   initialState: initialObj,
   reducers: {
-    setTimestampValue(state, action: PayloadAction<TPayload>) {
+    setTimestampValue(state, action: PayloadAction<TPayloadValue>) {
       const { value, dungeon, week } = action.payload;
       state[dungeon][week] = dungeonMaxTimestamp[dungeon] - value;
     },
   },
 });
 
-export function setTimestampValue({
-  value,
-  dungeon,
-  week,
-}: {
-  value: number;
-  dungeon: TDungeonKeys;
-  week: TDungeonWeeks;
-}) {
+export default timestampSlice;
+
+export function setTimestampValue({ value, dungeon, week }: TPayloadValue) {
   return {
     type: 'timestamp/setTimestampValue',
     payload: { value, dungeon, week },
