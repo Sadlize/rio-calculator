@@ -1,39 +1,32 @@
 'use client';
 
-// import { TLocale } from '@/projectSettings';
 import Button from 'components/Elements/Button';
-// import { getDictionary } from 'utils/dictionaries';
-import { Transition } from 'react-transition-group';
-import { useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'redux/store';
+import { setImportMenuOpenStatus } from 'redux/slices/commonSlice';
 import ImportForm from 'components/Modules/ImportForm';
+import styles from './CharacterImport.module.css';
 
-// TODO: change translation type
-function CharacterImport({ translations }: { translations: any }) {
-  const $importMenuNode = useRef(null);
-  const [importMenuOpen, setImportMenuOpen] = useState(false);
+function CharacterImport() {
+  const dispatch = useAppDispatch();
+  const { isImportMenuOpen } = useAppSelector((state) => state.common);
 
   return (
-    <>
+    <div className={styles.base}>
       <Button
         onClick={() => {
-          setImportMenuOpen(!importMenuOpen);
+          dispatch(setImportMenuOpenStatus(!isImportMenuOpen));
         }}
       >
-        {translations.Buttons.import}
+        <div className={styles.menu_icon}>
+          <div className={styles.menu_iconTop} />
+          <div className={styles.menu_iconMiddle} />
+          <div className={styles.menu_iconBottom} />
+          {/* <div className="menu-icon-cross-top" /> */}
+          {/* <div className="menu-icon-cross-bottom" /> */}
+        </div>
       </Button>
-      <Transition
-        mountOnEnter
-        unmountOnExit
-        nodeRef={$importMenuNode}
-        in={importMenuOpen}
-        timeout={{
-          appear: 0,
-          exit: 300,
-        }}
-      >
-        {(status) => <ImportForm Ref={$importMenuNode} status={status} />}
-      </Transition>
-    </>
+      <ImportForm />
+    </div>
   );
 }
 

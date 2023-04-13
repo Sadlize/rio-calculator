@@ -3,13 +3,11 @@ import LanguageSwitcher from 'components/Modules/LanguageSwitcher';
 import CharacterImport from 'components/Modules/CharacterImport';
 import ScoreValue from 'components/Modules/ScoreValue';
 import ReduxProvider from 'redux/ReduxProvider';
-import getDictionary from 'utils/dictionaries';
 import styles from '../Page.module.css';
 import { TParams } from './layout';
 
 async function Home({ params }: TParams) {
   const { locale } = params;
-  const dict = await getDictionary(locale);
 
   return (
     <ReduxProvider>
@@ -17,7 +15,7 @@ async function Home({ params }: TParams) {
         <div className={styles.header__items}>
           <LanguageSwitcher locale={locale} />
           <ScoreValue />
-          <CharacterImport translations={dict} />
+          <CharacterImport />
         </div>
       </header>
       <main className={styles.main}>

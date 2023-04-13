@@ -2,6 +2,7 @@
 
 import { useAppSelector } from 'redux/store';
 import { TDungeonKeys } from 'utils/dungeons';
+import styles from './ScoreValue.module.css';
 
 function ScoreValue() {
   const scores = useAppSelector((state) => state.scores);
@@ -18,7 +19,7 @@ function ScoreValue() {
   );
 
   return (
-    <div style={{ color: 'white' }}>
+    <div className={styles.base}>
       {Number.isInteger(sumDungeonScoreValues)
         ? sumDungeonScoreValues
         : sumDungeonScoreValues.toFixed(2)}

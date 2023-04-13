@@ -5,6 +5,7 @@ import starSlice from 'redux/slices/starSlice';
 import timestampSlice from 'redux/slices/timestampSlice';
 import scoreSlice from 'redux/slices/scoreSlice';
 import keyLevelSlice from 'redux/slices/keyLevelSlice';
+import commonSlice from 'redux/slices/commonSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     keyLevels: keyLevelSlice.reducer,
     stars: starSlice.reducer,
     timestamps: timestampSlice.reducer,
+    common: commonSlice.reducer,
   },
 });
 

@@ -1,24 +1,39 @@
 @import "variables.css";
 
 .header {
-  background-color: color_Black;
-  border-bottom: 1px solid color_Gray;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
+  position: relative;
+  height: header_Height;
 
   &__items {
+    height: header_Height;
     display: flex;
-    padding: 0.8rem 1.6rem;
+    padding: 0 0.8rem;
     align-items: center;
     justify-content: space-between;
     width: min(100%, 900px);
     margin: 0 auto;
+    background-color: color_Black;
+    border-bottom: 1px solid color_Gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    @media BP2_min {
+      padding: 0 1.6rem;
+    }
+
+    @media BP3_min {
+      padding: 0;
+    }
   }
 }
 
 .main {
-  padding-top: 7.2rem;
+  margin-top: 1.6rem;
+
+  @media BP2_min {
+    margin-top: 3.2rem;
+  }
 }

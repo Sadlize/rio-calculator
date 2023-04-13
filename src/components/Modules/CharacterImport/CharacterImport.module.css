@@ -1,0 +1,37 @@
+@import "variables.css";
+
+.base {
+}
+
+.menu_icon {
+  position: relative;
+  z-index: 2;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+
+  &Base {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: color_Black;
+    transition: all 400ms ease-in-out;
+  }
+
+  &Top {
+    @extend .menu_iconBase;
+    top: 0;
+  }
+
+  &Middle {
+    @extend .menu_iconBase;
+    width: 75%;
+    top: 7px;
+  }
+
+  &Bottom {
+    @extend .menu_iconBase;
+    bottom: 0;
+  }
+}
