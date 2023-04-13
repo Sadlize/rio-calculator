@@ -3,17 +3,19 @@
 .header {
   position: relative;
   height: header_Height;
+  background-color: color_Black;
+  border-bottom: 1px solid color_Gray;
 
   &__items {
     height: header_Height;
+    background-color: color_Black;
+    border-bottom: 1px solid color_Gray;
     display: flex;
     padding: 0 0.8rem;
     align-items: center;
     justify-content: space-between;
     width: min(100%, 900px);
     margin: 0 auto;
-    background-color: color_Black;
-    border-bottom: 1px solid color_Gray;
     position: fixed;
     top: 0;
     left: 0;

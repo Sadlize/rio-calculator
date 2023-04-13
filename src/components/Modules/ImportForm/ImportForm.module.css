@@ -12,15 +12,26 @@
   transition: transition_300 easeOutCubic;
   transition-property: visibility, transform;
 
-  > form {
-    display: flex;
-    justify-items: center;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
+  @media BP2_min {
+    transform: translateX(0);
+    height: fit-content;
+  }
 
-    > input {
-      border: 1px solid white;
+  > form {
+    display: grid;
+    position: relative;
+    height: calc(100% - 4rem);
+    align-content: center;
+    justify-items: center;
+    gap: 0.8rem;
+
+    @media BP2_min {
+      padding: 0 1.6rem;
+      grid-template-columns: 1fr 2fr 2fr auto;
+    }
+
+    @media BP3_min {
+      padding: 0;
     }
   }
 }
@@ -28,4 +39,63 @@
 .open {
   visibility: visible;
   transform: translateX(0);
+
+  @media BP3_min {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .item {
+    animation: drop 600ms;
+    animation-fill-mode: forwards;
+    animation-delay: transition_300;
+  }
+}
+
+input.item {
+  color: color_White;
+  border: 1px solid white;
+  height: 2rem;
+  width: 60%;
+  text-align: center;
+
+  @media BP2_min {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.item{
+  position: relative;
+  top: 0;
+  opacity: 0;
+  transition: transition_300 easeOutCubic;
+  transition-property: opacity;
+
+  &:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.7s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.9s;
+  }
+}
+
+@keyframes drop {
+  from {
+    top: -150px;
+    opacity: 0;
+  }
+  70% {
+    top: 15px;
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
 }

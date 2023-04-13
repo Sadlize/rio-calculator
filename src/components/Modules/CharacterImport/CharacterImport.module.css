@@ -3,6 +3,11 @@
 .base {
 }
 
+.importButton {
+  padding: 0;
+  background: transparent;
+}
+
 .menu_icon {
   position: relative;
   z-index: 2;
@@ -15,7 +20,7 @@
     right: 0;
     width: 100%;
     height: 2px;
-    background: color_Black;
+    background: color_White;
     transition: all 400ms ease-in-out;
   }
 

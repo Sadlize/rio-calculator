@@ -36,23 +36,30 @@ function ImportForm() {
           <form ref={$importMenuNode}>
             <input
               type="text"
+              placeholder="region"
+              className={styles.item}
               onChange={(e) => {
                 region.current = e.target.value;
               }}
             />
             <input
               type="text"
+              placeholder="realm"
+              className={styles.item}
               onChange={(e) => {
                 realm.current = e.target.value;
               }}
             />
             <input
               type="text"
+              placeholder="character"
+              className={styles.item}
               onChange={(e) => {
                 name.current = e.target.value;
               }}
             />
             <Button
+              className={styles.item}
               onClick={async () => {
                 const data = await refactorRIODataHandler(
                   region.current,

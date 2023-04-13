@@ -18,15 +18,23 @@
       margin-right: 0.5rem;
     }
 
-    &_open {
-      .dropdown_chevron {
-        transform: rotate(180deg);
+    & > span {
+      width: 0;
+      overflow: hidden;
+      display:inline-block;
+      transition: transition_300 easeOutCubic;
+      transition-property: width;
+    }
+
+    &_open, &:hover {
+      & > span {
+        width: 100%;
+      }
+
+      & > svg {
+        margin-left: 0.5rem;
       }
     }
-  }
-
-  &_chevron {
-    transform: rotate(0deg);
   }
 
   &__content {
@@ -73,7 +81,7 @@
 }
 
 .chevron {
-  margin-left: 0.5rem;
+  flex-shrink: 0;
 
   path{
     transition: transition_300 easeOutCubic;

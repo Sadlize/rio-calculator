@@ -13,6 +13,7 @@ function CharacterImport() {
   return (
     <div className={styles.base}>
       <Button
+        className={styles.importButton}
         onClick={() => {
           dispatch(setImportMenuOpenStatus(!isImportMenuOpen));
         }}

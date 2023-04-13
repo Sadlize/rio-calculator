@@ -48,7 +48,7 @@ function LanguageSwitcher({ locale }: { locale: TLocale }) {
           height={128}
           alt={`${locale} flag`}
         />
-        {/* {localeFullName[locale]} */}
+        <span>{localeFullName[locale]}</span>
         <DropdownChevron
           reverse={languageMenuOpen}
           className={styles.chevron}
