@@ -23,6 +23,14 @@ export type TDungeonCard = {
   imgBackground: TDungeonImage;
 };
 
+export type TRunStats = Array<{
+  short_name: string;
+  affixes: Array<{ name: string }>;
+  score: number;
+  mythic_level: number;
+  clear_time_ms: number;
+}>;
+
 export const getDungeons = async (
   locale: TLocale,
 ): Promise<Array<TDungeonCard>> => {

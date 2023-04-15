@@ -1,24 +1,13 @@
 import { TInitialObj } from 'redux/slices';
-import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
+import { TDungeonKeys, TDungeonWeeks, TRunStats } from 'utils/dungeons';
 
-async function getRIOData(region: string, realm: string, name: string) {
-  const res = await fetch(
-    `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_best_runs%2Cmythic_plus_alternate_runs`,
-  );
-  return res.json();
-}
+export type RIOData = {
+  mythic_plus_best_runs: TRunStats;
+  mythic_plus_alternate_runs: TRunStats;
+};
 
-async function refactorRIODataHandler(
-  region: string,
-  realm: string,
-  name: string,
-) {
-  const data = await getRIOData(region, realm, name);
-
-  if (data.ok === false || data.statusCode === 400) {
-    return data;
-  }
-  const bestRuns = [
+function refactorRIOData(data: RIOData) {
+  const bestRuns: TRunStats = [
     ...data.mythic_plus_best_runs,
     ...data.mythic_plus_alternate_runs,
   ];
@@ -48,4 +37,4 @@ async function refactorRIODataHandler(
   return bestScores;
 }
 
-export default refactorRIODataHandler;
+export default refactorRIOData;

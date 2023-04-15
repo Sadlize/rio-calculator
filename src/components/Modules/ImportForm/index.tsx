@@ -4,11 +4,12 @@ import { useAppDispatch, useAppSelector } from 'redux/store';
 import { useRef } from 'react';
 import { Transition } from 'react-transition-group';
 import { regions } from '@/projectSettings';
-import refactorRIODataHandler from '@/src/api/getCharacterData';
+import refactorRIOData, { RIOData } from 'utils/refactorRIOData';
 import { setImportScore } from 'redux/slices/scoreSlice';
 import { setImportKeyLevel } from 'redux/slices/keyLevelSlice';
 import { setImportTimestamp } from 'redux/slices/timestampSlice';
 import { setImportMenuOpenStatus } from 'redux/slices/commonSlice';
+import characterRIOData from 'requests/characterRIOData';
 import styles from './ImportForm.module.css';
 
 export type TImportForm = {
@@ -89,20 +90,25 @@ function ImportForm({ translations }: TImportForm) {
                   return;
                 }
 
-                const data = await refactorRIODataHandler(
+                const response = await characterRIOData.get(
                   region.current,
                   realm.current,
                   name.current,
                 );
 
-                if (data.error) {
+                if (!response.data) {
+                  // console.log(response.errorMessage);
                   return;
                 }
 
+                const data = refactorRIOData(response.data as RIOData);
                 dispatch(setImportScore(data.scores));
                 dispatch(setImportKeyLevel(data.keyLevels));
                 dispatch(setImportTimestamp(data.timestamps));
                 dispatch(setImportMenuOpenStatus(false));
+                region.current = '';
+                realm.current = '';
+                name.current = '';
               }}
             >
               {translations.buttonLabel}
