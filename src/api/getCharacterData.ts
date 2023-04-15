@@ -1,20 +1,10 @@
 import { TInitialObj } from 'redux/slices';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
 
-async function getRIOData(
-  region = 'eu',
-  realm = 'tarrenmill',
-  name = 'kotyatkie',
-) {
+async function getRIOData(region: string, realm: string, name: string) {
   const res = await fetch(
     `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_best_runs%2Cmythic_plus_alternate_runs`,
   );
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
-
   return res.json();
 }
 
@@ -24,6 +14,10 @@ async function refactorRIODataHandler(
   name: string,
 ) {
   const data = await getRIOData(region, realm, name);
+
+  if (data.ok === false || data.statusCode === 400) {
+    return data;
+  }
   const bestRuns = [
     ...data.mythic_plus_best_runs,
     ...data.mythic_plus_alternate_runs,

@@ -82,6 +82,7 @@
 
 .chevron {
   flex-shrink: 0;
+  background-color: color_Black;
 
   path{
     transition: transition_300 easeOutCubic;
@@ -90,6 +91,7 @@
 }
 
 .overlay {
+  pointer-events: none;
   position: fixed;
   top: 0;
   bottom: 0;

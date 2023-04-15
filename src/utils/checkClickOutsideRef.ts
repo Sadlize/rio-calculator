@@ -1,5 +1,3 @@
-'use client';
-
 const checkClickOutsideRef = (
   event: MouseEvent,
   ref: { current: HTMLDivElement | null },

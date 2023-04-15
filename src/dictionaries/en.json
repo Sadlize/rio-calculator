@@ -15,7 +15,10 @@
     "the_azure_vault": "The Azure Vault",
     "halls_of_valor": "Halls of Valor"
   },
-  "Buttons": {
-    "import": "Import"
+  "ImportForm": {
+    "region": "region",
+    "realm": "realm",
+    "character": "character",
+    "buttonLabel": "Import"
   }
 }

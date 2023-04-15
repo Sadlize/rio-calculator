@@ -3,10 +3,10 @@
 import Button from 'components/Elements/Button';
 import { useAppDispatch, useAppSelector } from 'redux/store';
 import { setImportMenuOpenStatus } from 'redux/slices/commonSlice';
-import ImportForm from 'components/Modules/ImportForm';
+import ImportForm, { TImportForm } from 'components/Modules/ImportForm';
 import styles from './CharacterImport.module.css';
 
-function CharacterImport() {
+function CharacterImport({ translations }: TImportForm) {
   const dispatch = useAppDispatch();
   const { isImportMenuOpen } = useAppSelector((state) => state.common);
 
@@ -26,7 +26,7 @@ function CharacterImport() {
           {/* <div className="menu-icon-cross-bottom" /> */}
         </div>
       </Button>
-      <ImportForm />
+      <ImportForm translations={translations} />
     </div>
   );
 }

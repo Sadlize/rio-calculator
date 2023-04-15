@@ -15,13 +15,6 @@ export const dungeonMaxTimestamp = {
 
 export type TDungeonKeys = keyof typeof dungeonMaxTimestamp;
 export type TDungeonWeeks = 'Tyrannical' | 'Fortified';
-// export type TDungeonStats = {
-//   keyLevel: number;
-//   score: number;
-// };
-// export type TDungeonObj = {
-//   [dungeon in TDungeonKeys]: { [week in TDungeonWeeks]: TDungeonStats };
-// };
 
 export type TDungeonCard = {
   id: number;

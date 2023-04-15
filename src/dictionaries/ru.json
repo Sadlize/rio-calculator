@@ -15,7 +15,10 @@
     "the_azure_vault": "Лазурное хранилище",
     "halls_of_valor": "Чертоги Доблести"
   },
-  "Buttons": {
-    "import": "Импорт"
+  "ImportForm": {
+    "region": "Регион",
+    "realm": "Игровой мир",
+    "character": "Персонаж",
+    "buttonLabel": "Импорт"
   }
 }
