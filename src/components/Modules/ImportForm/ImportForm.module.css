@@ -3,6 +3,7 @@
 .base {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: 100%;
   right: 0;
@@ -27,6 +28,7 @@
     align-content: center;
     justify-items: center;
     gap: 0.8rem;
+    width: 100%;
     max-width: calc(content_Width / 2);
 
     @media BP2_min {
