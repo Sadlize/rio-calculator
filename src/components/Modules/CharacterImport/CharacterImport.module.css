@@ -14,29 +14,72 @@
   width: 17px;
   height: 17px;
   cursor: pointer;
+}
 
+.menu_hamburger {
   &Base {
     position: absolute;
     right: 0;
     width: 100%;
     height: 2px;
     background: color_White;
-    transition: all 400ms ease-in-out;
+    transition: transition_300 easeOutCubic;
   }
 
   &Top {
-    @extend .menu_iconBase;
+    @extend .menu_hamburgerBase;
     top: 0;
   }
 
   &Middle {
-    @extend .menu_iconBase;
+    @extend .menu_hamburgerBase;
     width: 75%;
     top: 7px;
   }
 
   &Bottom {
-    @extend .menu_iconBase;
+    @extend .menu_hamburgerBase;
     bottom: 0;
+  }
+}
+
+.menu_cross {
+  &Base {
+    position: absolute;
+    width: 19px;
+    height: 2px;
+    background: color_White;
+    transition: transition_300 easeOutCubic;
+  }
+
+  &Top {
+    @extend .menu_crossBase;
+    top: 0;
+    transform: translate(-2px, 7px) rotate(45deg) scale(0);
+  }
+
+  &Bottom {
+    @extend .menu_crossBase;
+    bottom: 0;
+    transform: translate(-2px, -8px) rotate(-45deg) scale(0);
+  }
+}
+
+.open {
+  & > .menu_hamburger {
+    &Top, &Middle, &Bottom {
+      width: 0;
+    }
+  }
+
+  & > .menu {
+    &_cross {
+      &Top {
+        transform: translate(-2px, 7px) rotate(45deg) scale(1);
+      }
+      &Bottom {
+        transform: translate(-2px, -8px) rotate(-45deg) scale(1);
+      }
+    }
   }
 }

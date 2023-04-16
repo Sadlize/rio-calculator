@@ -4,6 +4,7 @@ import Button from 'components/Elements/Button';
 import { useAppDispatch, useAppSelector } from 'redux/store';
 import { setImportMenuOpenStatus } from 'redux/slices/commonSlice';
 import ImportForm, { TImportForm } from 'components/Modules/ImportForm';
+import cx from 'clsx';
 import styles from './CharacterImport.module.css';
 
 function CharacterImport({ translations }: TImportForm) {
@@ -18,12 +19,14 @@ function CharacterImport({ translations }: TImportForm) {
           dispatch(setImportMenuOpenStatus(!isImportMenuOpen));
         }}
       >
-        <div className={styles.menu_icon}>
-          <div className={styles.menu_iconTop} />
-          <div className={styles.menu_iconMiddle} />
-          <div className={styles.menu_iconBottom} />
-          {/* <div className="menu-icon-cross-top" /> */}
-          {/* <div className="menu-icon-cross-bottom" /> */}
+        <div
+          className={cx(styles.menu_icon, { [styles.open]: isImportMenuOpen })}
+        >
+          <div className={styles.menu_hamburgerTop} />
+          <div className={styles.menu_hamburgerMiddle} />
+          <div className={styles.menu_hamburgerBottom} />
+          <div className={styles.menu_crossTop} />
+          <div className={styles.menu_crossBottom} />
         </div>
       </Button>
       <ImportForm translations={translations} />
