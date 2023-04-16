@@ -1,6 +1,8 @@
 @import "variables.css";
 
 .base {
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 100%;
   right: 0;
@@ -13,9 +15,8 @@
   transition-property: visibility, transform;
 
   @media BP2_min {
-    top: calc(100% + 0.5rem);
     transform: translateX(0);
-    height: fit-content;
+    height: 3.2rem;
     background-color: transparent;
   }
 
