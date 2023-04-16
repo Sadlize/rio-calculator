@@ -1,7 +1,7 @@
 @import "variables.css";
 
 .base {
-  width: min(100%, 900px);
+  width: min(100%, content_Width);
   margin: 0 auto;
 }
 

@@ -14,7 +14,7 @@
     padding: 0 0.8rem;
     align-items: center;
     justify-content: space-between;
-    width: min(100%, 900px);
+    width: min(100%, content_Width);
     margin: 0 auto;
     position: fixed;
     top: 0;

@@ -1,5 +1,6 @@
 /* Constants */
 @value header_Height: 4rem;
+@value content_Width: 900px;
 
 /* Breakpoint */
 @value BP1: 414px;

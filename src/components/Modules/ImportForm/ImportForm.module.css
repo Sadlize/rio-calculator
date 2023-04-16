@@ -27,6 +27,7 @@
     align-content: center;
     justify-items: center;
     gap: 0.8rem;
+    max-width: calc(content_Width / 2);
 
     @media BP2_min {
       padding: 0 1.6rem;
