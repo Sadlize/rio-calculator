@@ -3,16 +3,6 @@ type Data = {
   headers?: object;
 };
 
-type Options = {
-  method: string;
-  headers?: object;
-  body?: string | object;
-};
-
-type Headers = {
-  [key: string]: string;
-};
-
 export type FetchResponse = {
   data?: object;
   errorMessage?: string;
@@ -44,17 +34,23 @@ async function generateMethod(
   url: string,
   { json, headers }: Data,
 ) {
-  const options: Options = { method };
-  const newHeaders = (headers || {}) as Headers;
+  const options: RequestInit = { method };
+  const newHeaders: HeadersInit = new Headers();
 
   if (json) {
-    newHeaders['Content-Type'] = 'application/json';
+    newHeaders.set('Content-Type', 'application/json');
+  }
+
+  if (headers) {
+    Object.keys(headers).forEach((name) =>
+      newHeaders.set(name, headers[name as keyof typeof headers]),
+    );
   }
 
   options.headers = newHeaders;
 
   try {
-    return handleResponse(url, await fetch(url, options as RequestInit));
+    return handleResponse(url, await fetch(url, options));
   } catch (error) {
     throw new Error(JSON.stringify(error));
   }
