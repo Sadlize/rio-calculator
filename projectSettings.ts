@@ -13,4 +13,3 @@ export const i18n = {
 export type TLocale = (typeof i18n)['locales'][number];
 
 export const regions = ['eu', 'us', 'tw', 'kr', 'cn'];
-export type regionsKeys = keyof typeof regions;
