@@ -42,8 +42,8 @@ async function generateMethod(
   }
 
   if (headers) {
-    Object.keys(headers).forEach((name) =>
-      newHeaders.set(name, headers[name as keyof typeof headers]),
+    Object.entries(headers).forEach(([header, value]) =>
+      newHeaders.set(header, value),
     );
   }
 
