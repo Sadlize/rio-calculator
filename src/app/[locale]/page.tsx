@@ -14,10 +14,12 @@ async function Home({ params }: TParams) {
   return (
     <ReduxProvider>
       <header className={styles.header}>
-        <div className={styles.header__items}>
-          <LanguageSwitcher locale={locale} />
-          <ScoreValue />
-          <CharacterImport translations={dict.ImportForm} />
+        <div className={styles.header__container}>
+          <div className={styles.header__items}>
+            <LanguageSwitcher locale={locale} />
+            <ScoreValue />
+            <CharacterImport translations={dict.ImportForm} />
+          </div>
         </div>
       </header>
       <main className={styles.main}>

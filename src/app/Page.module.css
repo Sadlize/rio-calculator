@@ -1,26 +1,28 @@
 @import "variables.css";
 
 .header {
-  position: relative;
   height: header_Height;
-  background-color: color_Black;
-  border-bottom: 1px solid color_Gray;
+
+  &__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    height: header_Height;
+    background-color: color_Black;
+    box-shadow: element_inset_border;
+  }
 
   &__items {
     height: header_Height;
-    background-color: color_Black;
-    border-bottom: 1px solid color_Gray;
     display: flex;
     padding: 0 0.8rem;
     align-items: center;
     justify-content: space-between;
     width: min(100%, content_Width);
     margin: 0 auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
 
     @media BP2_min {
       padding: 0 1.6rem;
@@ -33,9 +35,16 @@
 }
 
 .main {
-  margin-top: 1.6rem;
+  background-image: url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1681825729/wow-letherMap.webp);
+  box-shadow: element_inset_border;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  margin-top: 0.4rem;
+
 
   @media BP2_min {
-    margin-top: 3.2rem;
+    padding: 3.2rem 0;
   }
 }

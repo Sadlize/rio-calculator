@@ -2,7 +2,10 @@
 @value header_Height: 4rem;
 @value content_Width: 900px;
 
-/* Breakpoint */
+/* Borders */
+@value element_inset_border: inset 0 0 0 1px hsla(0,0%,100%,.08);
+
+/* Breakpoints */
 @value BP1: 414px;
 @value BP2: 1024px;
 @value BP3: 1600px;
