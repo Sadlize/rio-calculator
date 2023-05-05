@@ -1,5 +1,3 @@
-@import "variables.css";
-
 html,
 body {
   padding: 0;
@@ -99,4 +97,9 @@ svg {
 
 blockquote {
   margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }

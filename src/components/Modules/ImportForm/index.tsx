@@ -10,7 +10,7 @@ import { setImportKeyLevel } from 'redux/slices/keyLevelSlice';
 import { setImportTimestamp } from 'redux/slices/timestampSlice';
 import { setImportMenuOpenStatus } from 'redux/slices/commonSlice';
 import characterRIOData from 'requests/characterRIOData';
-import styles from './ImportForm.module.css';
+import styles from './ImportForm.module.scss';
 
 export type TImportForm = {
   translations: {

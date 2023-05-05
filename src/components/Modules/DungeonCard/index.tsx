@@ -11,7 +11,7 @@ import cx from 'clsx';
 import { setTimestampValue } from 'redux/slices/timestampSlice';
 import { setKeyLevelValue } from 'redux/slices/keyLevelSlice';
 import { setScoreValue } from 'redux/slices/scoreSlice';
-import styles from './DungeonCard.module.css';
+import styles from './DungeonCard.module.scss';
 
 type TProps = {
   abbreviation: TDungeonKeys;

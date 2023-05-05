@@ -2,7 +2,7 @@
 
 import { useAppSelector } from 'redux/store';
 import { TDungeonKeys } from 'utils/dungeons';
-import styles from './ScoreValue.module.css';
+import styles from './ScoreValue.module.scss';
 
 function ScoreValue() {
   const scores = useAppSelector((state) => state.scores);

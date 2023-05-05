@@ -1,5 +1,5 @@
-@import "variables.css";
-@import "mixins.css";
+@import "styles/variables";
+@import "styles/mixins";
 
 .base {
   width: 100%;
@@ -26,18 +26,18 @@
     touch-action: pan-x;
 
     &::-webkit-slider-runnable-track {
-      @extend .timestamp-track;
+      @include timestamp-track();
     }
 
     &::-moz-range-track {
-      @extend .timestamp-track;
+      @include timestamp-track();
     }
 
     &::-webkit-slider-thumb {
-      @extend .timestamp-thumb;
+      @include timestamp-thumb();
     }
     &::-moz-range-thumb {
-      @extend .timestamp-thumb;
+      @include timestamp-thumb();
     }
   }
 

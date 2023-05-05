@@ -4,7 +4,7 @@ import CharacterImport from 'components/Modules/CharacterImport';
 import ScoreValue from 'components/Modules/ScoreValue';
 import ReduxProvider from 'redux/ReduxProvider';
 import getDictionary from 'utils/dictionaries';
-import styles from '../Page.module.css';
+import styles from '../Page.module.scss';
 import { TParams } from './layout';
 
 async function Home({ params }: TParams) {
@@ -26,6 +26,9 @@ async function Home({ params }: TParams) {
         {/* @ts-expect-error Server Component */}
         <Calculator locale={locale} />
       </main>
+      <footer className={styles.footer}>
+        <p>{dict.Footer.blizzardCopyright}</p>
+      </footer>
     </ReduxProvider>
   );
 }

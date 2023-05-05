@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import checkClickOutsideRef from 'utils/checkClickOutsideRef';
 import { Transition } from 'react-transition-group';
 import DropdownChevron from 'components/Elements/Icons';
-import styles from './LanguageSwitcher.module.css';
+import styles from './LanguageSwitcher.module.scss';
 
 function LanguageSwitcher({ locale }: { locale: TLocale }) {
   const altLocales = i18n.locales.filter((item) => item !== locale);

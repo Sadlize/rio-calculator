@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from 'redux/store';
 import { setImportMenuOpenStatus } from 'redux/slices/commonSlice';
 import ImportForm, { TImportForm } from 'components/Modules/ImportForm';
 import cx from 'clsx';
-import styles from './CharacterImport.module.css';
+import styles from './CharacterImport.module.scss';
 
 function CharacterImport({ translations }: TImportForm) {
   const dispatch = useAppDispatch();

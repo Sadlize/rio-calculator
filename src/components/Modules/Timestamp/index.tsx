@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
 import TimestampStars from 'components/Elements/TimestampStars';
 import TimestampSlider from 'components/Elements/TimestampSlider';
-import styles from './Timestamp.module.css';
+import styles from './Timestamp.module.scss';
 
 type TProps = {
   type: boolean;

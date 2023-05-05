@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'clsx';
-import styles from './Button.module.css';
+import styles from './Button.module.scss';
 
 export interface TProps extends React.ComponentPropsWithoutRef<'button'> {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-@import "variables.css";
+@import "styles/variables";
 
 .header {
   height: header_Height;
@@ -35,15 +35,18 @@
 }
 
 .main {
+  flex-grow: 1;
   background-image: url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1681825729/wow-letherMap.webp);
   box-shadow: element_inset_border;
   background-size: cover;
   background-position: center;
-
   margin-top: 0.4rem;
-
 
   @media BP2_min {
     padding: 3.2rem 0;
   }
+}
+
+.footer {
+  color: color_White;
 }

@@ -5,7 +5,7 @@ import { jsxRepeatCode } from 'utils/helpers';
 import { memo } from 'react';
 import { setStarNumber } from 'redux/slices/starSlice';
 import { TStarNumber } from 'redux/slices';
-import styles from './TimestampStars.module.css';
+import styles from './TimestampStars.module.scss';
 
 type TProps = {
   dungeon: TDungeonKeys;

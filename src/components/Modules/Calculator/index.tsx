@@ -1,7 +1,7 @@
 import DungeonInput from 'components/Modules/DungeonCard';
 import { TLocale } from '@/projectSettings';
 import { getDungeons } from 'utils/dungeons';
-import styles from './Calculator.module.css';
+import styles from './Calculator.module.scss';
 
 const Calculator = async ({ locale }: { locale: TLocale }) => {
   const dungeons = await getDungeons(locale);
