@@ -20,6 +20,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "api/*": ["./src/app/api/*"],
       "components/*": ["./src/components/*"],
       "modules/*": ["./src/modules/*"],
       "context/*": ["./src/context/*"],

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'redux/store';
 import { useRef } from 'react';
 import { Transition } from 'react-transition-group';
 import { regions } from '@/projectSettings';
-import refactorRIOData, { RIOData } from 'utils/refactorRIOData';
+import refactorRIOData, { RIOData } from 'utils/search/refactorRIOData';
 import { setImportScore } from 'redux/slices/scoreSlice';
 import { setImportKeyLevel } from 'redux/slices/keyLevelSlice';
 import { setImportTimestamp } from 'redux/slices/timestampSlice';

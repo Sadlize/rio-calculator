@@ -15,11 +15,10 @@
     "the_azure_vault": "The Azure Vault",
     "halls_of_valor": "Halls of Valor"
   },
-  "ImportForm": {
-    "region": "region",
-    "realm": "realm",
-    "character": "character",
-    "buttonLabel": "Import"
+  "CharacterImport": {
+    "inputPlaceholder": "Character import",
+    "search": "Search...",
+    "suggestion": ""
   },
   "Footer": {
     "blizzardCopyright": "Some assets copyright by Blizzard Entertainment, Inc. World of Warcraft, Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the U.S. and/or other countries."

@@ -1,85 +1,30 @@
 @import "styles/variables";
 
 .base {
-}
-
-.importButton {
-  padding: 0;
-  background: transparent;
-}
-
-.menu_icon {
   position: relative;
-  z-index: 2;
-  width: 17px;
-  height: 17px;
-  cursor: pointer;
 }
 
-.menu_hamburger {
-  &Base {
-    position: absolute;
-    right: 0;
+.form {
+  position: relative;
+}
+
+.item {
+  color: color_White;
+  border: 1px solid white;
+  height: 2rem;
+  width: 60%;
+  text-align: center;
+
+  @media BP2_min {
     width: 100%;
-    height: 2px;
-    background: color_White;
-    transition: transition_300 easeOutCubic;
-  }
-
-  &Top {
-    @extend .menu_hamburgerBase;
-    top: 0;
-  }
-
-  &Middle {
-    @extend .menu_hamburgerBase;
-    width: 75%;
-    top: 7px;
-  }
-
-  &Bottom {
-    @extend .menu_hamburgerBase;
-    bottom: 0;
+    height: auto;
   }
 }
 
-.menu_cross {
-  &Base {
-    position: absolute;
-    width: 19px;
-    height: 2px;
-    background: color_White;
-    transition: transition_300 easeOutCubic;
-  }
-
-  &Top {
-    @extend .menu_crossBase;
-    top: 0;
-    transform: translate(-2px, 7px) rotate(45deg) scale(0);
-  }
-
-  &Bottom {
-    @extend .menu_crossBase;
-    bottom: 0;
-    transform: translate(-2px, -8px) rotate(-45deg) scale(0);
-  }
-}
-
-.open {
-  & > .menu_hamburger {
-    &Top, &Middle, &Bottom {
-      width: 0;
-    }
-  }
-
-  & > .menu {
-    &_cross {
-      &Top {
-        transform: translate(-2px, 7px) rotate(45deg) scale(1);
-      }
-      &Bottom {
-        transform: translate(-2px, -8px) rotate(-45deg) scale(1);
-      }
-    }
-  }
+.suggestionsTooltip {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: black;
+  color:white;
 }

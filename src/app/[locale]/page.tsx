@@ -18,7 +18,7 @@ async function Home({ params }: TParams) {
           <div className={styles.header__items}>
             <LanguageSwitcher locale={locale} />
             <ScoreValue />
-            <CharacterImport translations={dict.ImportForm} />
+            <CharacterImport translations={dict.CharacterImport} />
           </div>
         </div>
       </header>

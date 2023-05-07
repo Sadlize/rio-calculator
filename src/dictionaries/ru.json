@@ -15,11 +15,10 @@
     "the_azure_vault": "Лазурное хранилище",
     "halls_of_valor": "Чертоги Доблести"
   },
-  "ImportForm": {
-    "region": "Регион",
-    "realm": "Игровой мир",
-    "character": "Персонаж",
-    "buttonLabel": "Импорт"
+  "CharacterImport": {
+    "inputPlaceholder": "Импортировать персонажа",
+    "search": "Поиск...",
+    "suggestion": ""
   },
   "Footer": {
     "blizzardCopyright": "Авторские права на некоторые изображения принадлежат Blizzard Entertainment, Inc. World of Warcraft, Warcraft и Blizzard Entertainment являются товарными знаками или зарегистрированными товарными знаками компании Blizzard Entertainment в США и (или) других государствах."

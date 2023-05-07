@@ -22,8 +22,8 @@ type TProps = {
 function DungeonCard({ abbreviation, dungeonName, imgBackground }: TProps) {
   const keyLevels = useAppSelector((state) => state.keyLevels[abbreviation]);
 
-  const tyrannicalKeyLevel = keyLevels.Tyrannical;
-  const fortifiedKeyLevel = keyLevels.Fortified;
+  const tyrannicalKeyLevel = keyLevels?.Tyrannical || 0;
+  const fortifiedKeyLevel = keyLevels?.Fortified || 0;
 
   const [timestampSliderType, setTimestampSliderType] = useState<
     undefined | TDungeonWeeks
