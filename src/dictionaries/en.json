@@ -13,7 +13,15 @@
     "court_of_stars": "Court of Stars",
     "ruby_life_pools": "Ruby Life Pools",
     "the_azure_vault": "The Azure Vault",
-    "halls_of_valor": "Halls of Valor"
+    "halls_of_valor": "Halls of Valor",
+    "the_underrot": "The Underrot",
+    "freehold": "Freehold",
+    "halls_of_infusion": "Halls of Infusion",
+    "neltharions_lair": "Neltharion's Lair",
+    "brackenhide_hollow": "Brackenhide Hollow",
+    "neltharus": "Neltharus",
+    "the_vortex_pinnacle": "The Vortex Pinnacle",
+    "uldaman_legacy_of_tyr": "Uldaman: Legacy of Tyr"
   },
   "CharacterImport": {
     "inputPlaceholder": "Character import",

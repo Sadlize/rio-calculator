@@ -13,7 +13,15 @@
     "court_of_stars": "Квартал Звезд",
     "ruby_life_pools": "Рубиновые Омуты Жизни",
     "the_azure_vault": "Лазурное хранилище",
-    "halls_of_valor": "Чертоги Доблести"
+    "halls_of_valor": "Чертоги Доблести",
+    "the_underrot": "Подгнилье",
+    "freehold": "Вольная Гавань",
+    "halls_of_infusion": "Чертоги Насыщения",
+    "neltharions_lair": "Логово Нелтариона",
+    "brackenhide_hollow": "Лощина Бурошкуров",
+    "neltharus": "Нелтарий",
+    "the_vortex_pinnacle": "Вершина Смерча",
+    "uldaman_legacy_of_tyr": "Ульдаман: Наследие Тира"
   },
   "CharacterImport": {
     "inputPlaceholder": "Импортировать персонажа",
