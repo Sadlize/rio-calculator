@@ -51,6 +51,13 @@ function CharacterImport({ translations }: TImportForm) {
     dispatch(setImportTimestamp(data.timestamps));
   };
 
+  const inputChangeHandle = (event) => {
+    const inputValue = event.target.value;
+    if (inputValue.length <= 12) {
+      setCharacterName(inputValue);
+    }
+  };
+
   return (
     <div className={styles.base}>
       <form className={styles.form}>
@@ -59,21 +66,16 @@ function CharacterImport({ translations }: TImportForm) {
           value={characterName}
           placeholder={`${translations.inputPlaceholder}`}
           className={styles.item}
-          onChange={(e) => {
-            setCharacterName(e.target.value);
-          }}
+          onChange={inputChangeHandle}
         />
       </form>
       {!isEmpty(suggestions) && (
         <div className={styles.suggestionsTooltip}>
           {suggestions.map((s) => {
             const { name, data } = s;
-            const { region, realm } = data;
+            const { region, realm, id } = data;
             return (
-              <Button
-                key={Math.random()}
-                onClick={test(region.slug, realm.slug, name)}
-              >
+              <Button key={id} onClick={test(region.slug, realm.slug, name)}>
                 {`${name} ${region.slug.toUpperCase()}-${realm.name}`}
               </Button>
             );

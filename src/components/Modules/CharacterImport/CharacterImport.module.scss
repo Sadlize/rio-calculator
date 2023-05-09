@@ -11,14 +11,7 @@
 .item {
   color: color_White;
   border: 1px solid white;
-  height: 2rem;
-  width: 60%;
   text-align: center;
-
-  @media BP2_min {
-    width: 100%;
-    height: auto;
-  }
 }
 
 .suggestionsTooltip {
