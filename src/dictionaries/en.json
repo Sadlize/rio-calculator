@@ -24,9 +24,9 @@
     "uldaman_legacy_of_tyr": "Uldaman: Legacy of Tyr"
   },
   "CharacterImport": {
-    "inputPlaceholder": "Character import",
+    "inputPlaceholder": "Type character",
     "search": "Search...",
-    "suggestion": ""
+    "empty": "Couldn't find any characters"
   },
   "Footer": {
     "blizzardCopyright": "Some assets copyright by Blizzard Entertainment, Inc. World of Warcraft, Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the U.S. and/or other countries."

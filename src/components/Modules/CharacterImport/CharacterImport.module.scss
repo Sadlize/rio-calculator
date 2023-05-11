@@ -1,4 +1,5 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .base {
   position: relative;
@@ -12,6 +13,7 @@
   color: color_White;
   border: 1px solid white;
   text-align: center;
+  width: 200px;
 }
 
 .suggestionsTooltip {
@@ -19,5 +21,20 @@
   top: 100%;
   right: 0;
   background-color: black;
-  color:white;
+  color: color_White;
+  min-width: 100%;
+
+  &:after {
+    @include metal-border();
+    box-shadow: none;
+  }
+}
+
+.suggestion {
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background-color: red;
+  }
 }
