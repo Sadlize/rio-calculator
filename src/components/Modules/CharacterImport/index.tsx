@@ -65,7 +65,7 @@ function CharacterImport({ translations }: TImportForm) {
       setCharacterName('');
     };
 
-  const inputChangeHandle = (event) => {
+  const inputChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     if (inputValue.length <= 12) {
       setCharacterName(inputValue);

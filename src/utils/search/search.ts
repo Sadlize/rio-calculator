@@ -4,6 +4,7 @@ export type TSuggestions = {
   data: {
     region: { slug: string };
     realm: { slug: string; name: string };
+    id: number;
   };
 };
 
