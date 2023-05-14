@@ -1,4 +1,5 @@
 @import "styles/variables";
+@import "styles/mixins";
 
 .base {
   width: 100%;
@@ -43,16 +44,8 @@
   top: 0;
 
   &:after {
-    content: "";
-    border-image: url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1681816309/metal_frame.webp) 16 fill / 8px round;
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    box-shadow: inset 0 0 15px 6px color_Black;
+    @include metal-border();
+    border-image-width: 12px;
   }
 
   > img {
