@@ -1,5 +1,6 @@
 import {
   dungeonMaxTimestamp,
+  getDungeonLimitTimestampValues,
   TDungeonKeys,
   TDungeonWeeks,
 } from 'utils/dungeons';
@@ -16,8 +17,7 @@ function useTimestamp(
 } {
   const timestamp = useAppSelector((state) => state.timestamps[dungeon][week]);
   const currentValue = dungeonMaxTimestamp[dungeon] - timestamp;
-  const maxValue = Math.round(dungeonMaxTimestamp[dungeon] * 0.4);
-  const minValue = maxValue * -1;
+  const { minValue, maxValue } = getDungeonLimitTimestampValues(dungeon);
   const step = maxValue * 0.02;
 
   return {

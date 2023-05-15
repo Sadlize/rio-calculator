@@ -1,10 +1,15 @@
 import cx from 'clsx';
 import { useAppDispatch, useAppSelector } from 'redux/store';
-import { TDungeonKeys, TDungeonWeeks } from 'utils/dungeons';
+import {
+  getDungeonLimitTimestampValues,
+  TDungeonKeys,
+  TDungeonWeeks,
+} from 'utils/dungeons';
 import { jsxRepeatCode } from 'utils/helpers';
-import { memo } from 'react';
 import { setStarNumber } from 'redux/slices/starSlice';
 import { TStarNumber } from 'redux/slices';
+import { setTimestampValue } from 'redux/slices/timestampSlice';
+import { setScoreValue } from 'redux/slices/scoreSlice';
 import styles from './TimestampStars.module.scss';
 
 type TProps = {
@@ -12,9 +17,17 @@ type TProps = {
   week: TDungeonWeeks;
 };
 
-const TimestampStars = memo(function TimestampStars({ dungeon, week }: TProps) {
+function TimestampStars({ dungeon, week }: TProps) {
   const dispatch = useAppDispatch();
   const currentStar = useAppSelector((state) => state.stars[dungeon][week]);
+  const keyLevel = useAppSelector((state) => state.keyLevels[dungeon][week]);
+  const { minValue, maxValue } = getDungeonLimitTimestampValues(dungeon);
+  const starTimestampValue = new Map([
+    [0, minValue],
+    [1, 0],
+    [2, maxValue / 2],
+    [3, maxValue],
+  ]);
 
   return (
     <div className={styles.base}>
@@ -27,6 +40,22 @@ const TimestampStars = memo(function TimestampStars({ dungeon, week }: TProps) {
               dispatch(
                 setStarNumber({ number: star as TStarNumber, dungeon, week }),
               );
+              const value = starTimestampValue.get(star);
+              dispatch(
+                setTimestampValue({
+                  value,
+                  dungeon,
+                  week,
+                }),
+              );
+              dispatch(
+                setScoreValue({
+                  keyLevel,
+                  timestamp: value,
+                  dungeon,
+                  week,
+                }),
+              );
             }}
           />
           <span
@@ -38,6 +67,6 @@ const TimestampStars = memo(function TimestampStars({ dungeon, week }: TProps) {
       ))}
     </div>
   );
-});
+}
 
 export default TimestampStars;

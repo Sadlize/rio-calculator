@@ -39,6 +39,13 @@ export type TRunStats = Array<{
   clear_time_ms: number;
 }>;
 
+export const getDungeonLimitTimestampValues = (dungeon) => {
+  const maxValue = Math.round(dungeonMaxTimestamp[dungeon] * 0.4);
+  const minValue = maxValue * -1;
+
+  return { minValue, maxValue };
+};
+
 export const getDungeons = async (
   locale: TLocale,
 ): Promise<Array<TDungeonCard>> => {
