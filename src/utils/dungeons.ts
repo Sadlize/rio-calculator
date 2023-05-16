@@ -39,7 +39,7 @@ export type TRunStats = Array<{
   clear_time_ms: number;
 }>;
 
-export const getDungeonLimitTimestampValues = (dungeon) => {
+export const getDungeonLimitTimestampValues = (dungeon: TDungeonKeys) => {
   const maxValue = Math.round(dungeonMaxTimestamp[dungeon] * 0.4);
   const minValue = maxValue * -1;
 

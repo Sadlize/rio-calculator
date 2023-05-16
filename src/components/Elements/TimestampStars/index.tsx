@@ -40,7 +40,7 @@ function TimestampStars({ dungeon, week }: TProps) {
               dispatch(
                 setStarNumber({ number: star as TStarNumber, dungeon, week }),
               );
-              const value = starTimestampValue.get(star);
+              const value = starTimestampValue.get(star) as number;
               dispatch(
                 setTimestampValue({
                   value,
