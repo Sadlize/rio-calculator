@@ -6,6 +6,7 @@ import { setTimestampValue } from 'redux/slices/timestampSlice';
 import { useCallback, useEffect } from 'react';
 import { TStarNumber } from 'redux/slices';
 import { setScoreValue } from 'redux/slices/scoreSlice';
+import isFocusInside from 'utils/focus';
 
 type TProps = {
   dungeon: TDungeonKeys;
@@ -63,8 +64,10 @@ function TimestampSlider({ dungeon, week, setTimestampSliderType }: TProps) {
       max={maxValue}
       step={step}
       value={currentValue || '0'}
-      onBlur={() => {
-        setTimestampSliderType(undefined);
+      onBlur={(e) => {
+        if (week === 'Fortified' && !isFocusInside(e)) {
+          setTimestampSliderType(undefined);
+        }
       }}
       onChange={(e) => {
         const value = +e.target.value;
