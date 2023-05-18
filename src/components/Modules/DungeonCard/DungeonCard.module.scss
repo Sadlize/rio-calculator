@@ -13,13 +13,16 @@
   }
 
   & h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: color_White;
     position: relative;
     width: 100%;
     z-index: 2;
     text-align: center;
     margin-bottom: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -64,8 +67,8 @@
   justify-items: center;
 
   > input {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     border: 0;
     color: color_White;
     font-size: 3rem;
@@ -75,12 +78,12 @@
 
     &:nth-of-type(1) {
       background-size: 100% 100%;
-      background-image: url(https://media.discordapp.net/attachments/848667196400992317/1086995636219551805/wowmplusscore3_tyr.png?width=250&height=250);
+      background-image: url(https://res.cloudinary.com/dq4lsz5od/image/upload/v1685989829/tyrannical.webp);
     }
 
     &:nth-of-type(2) {
       background-size: 100% 100%;
-      background-image: url(https://media.discordapp.net/attachments/848667196400992317/1086995635921748018/wowmplusscore3_fort.png?width=250&height=250);
+      background-image: url(https://res.cloudinary.com/dq4lsz5od/image/upload/v1685989829/fortified.webp);
     }
 
     &::placeholder {
