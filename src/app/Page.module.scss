@@ -36,7 +36,9 @@
 
 .main {
   flex-grow: 1;
-  background-image: url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1681825729/wow-letherMap.webp);
+  background-image:
+    linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
+    url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1686048259/site_background.webp);
   box-shadow: element_inset_border;
   background-size: cover;
   background-position: center;
