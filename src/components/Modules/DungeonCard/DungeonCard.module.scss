@@ -8,10 +8,6 @@
   overflow: hidden;
   padding: 1.6rem;
 
-  @media BP2_min {
-    border-radius: 0.5rem;
-  }
-
   & h2 {
     font-size: 2rem;
     color: color_White;
@@ -49,11 +45,13 @@
   &:after {
     @include metal-border();
     border-image-width: 12px;
+    border-radius: 2rem;
   }
 
   > img {
     filter: blur(0.05rem) brightness(0.4);
     pointer-events: none;
+    clip-path: polygon(2% 2%, 98% 2%, 98% 98%, 2% 98%);
   }
 }
 
