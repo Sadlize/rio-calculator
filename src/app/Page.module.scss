@@ -36,16 +36,16 @@
 
 .main {
   flex-grow: 1;
-  background-image:
-    linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
-    url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1686048259/site_background.webp);
-  box-shadow: element_inset_border;
-  background-size: cover;
-  background-position: center;
   margin-top: 0.4rem;
 
   @media BP2_min {
     padding: 3.2rem 0;
+    background-image:
+      linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
+      url(https://res.cloudinary.com/dq4lsz5od/image/upload/q_auto/v1686048259/site_background.webp);
+    box-shadow: element_inset_border;
+    background-size: cover;
+    background-position: center;
   }
 }
 
