@@ -10,7 +10,7 @@
 
   & h2 {
     font-size: 2rem;
-    color: color_White;
+    color: color_Silver;
     position: relative;
     width: 100%;
     z-index: 2;
@@ -19,6 +19,20 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-linear-gradient(
+        top,
+        color_White 0,
+        color_Silver 7%,
+        color_White 20%,
+        color_VeryLightGray 38%,
+        color_OldLace 68%,
+        color_Tea 83%,
+        color_WheatField 100%
+    );
+    background-position: center;
+    font-weight: 700;
   }
 }
 
