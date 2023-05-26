@@ -10,6 +10,7 @@ import { setImportKeyLevel } from 'redux/slices/keyLevelSlice';
 import { setImportTimestamp } from 'redux/slices/timestampSlice';
 import { useAppDispatch } from 'redux/store';
 import { getCharactersFromSearch, TSuggestions } from 'utils/search/search';
+import { SearchIcon } from 'components/Elements/Icons';
 import styles from './CharacterImport.module.scss';
 
 type TImportForm = {
@@ -100,15 +101,16 @@ function CharacterImport({ translations }: TImportForm) {
 
   return (
     <div className={styles.base}>
-      <form className={styles.form}>
+      <div className={styles.search} id="search">
         <input
+          className={styles.search_input}
           type="text"
           value={characterName}
           placeholder={`${translations.inputPlaceholder}`}
-          className={styles.item}
           onChange={inputChangeHandle}
         />
-      </form>
+        <SearchIcon color="white" />
+      </div>
       {searchStatus && (
         <ul className={styles.suggestionsTooltip}>{suggestionsList()}</ul>
       )}

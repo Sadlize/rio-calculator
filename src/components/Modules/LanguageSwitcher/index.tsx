@@ -7,7 +7,7 @@ import Image from 'components/Elements/Image';
 import { useEffect, useRef, useState } from 'react';
 import checkClickOutsideRef from 'utils/checkClickOutsideRef';
 import { Transition } from 'react-transition-group';
-import DropdownChevron from 'components/Elements/Icons';
+import { DropdownChevron } from 'components/Elements/Icons';
 import styles from './LanguageSwitcher.module.scss';
 
 function LanguageSwitcher({ locale }: { locale: TLocale }) {
