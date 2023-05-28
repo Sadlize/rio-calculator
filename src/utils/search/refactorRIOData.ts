@@ -1,5 +1,10 @@
-import { TInitialObj } from 'redux/slices';
-import { TDungeonKeys, TDungeonWeeks, TRunStats } from 'utils/dungeons';
+import { getInitialSliceObject } from 'redux/slices';
+import {
+  dungeonMaxTimestamp,
+  TDungeonKeys,
+  TDungeonWeeks,
+  TRunStats,
+} from 'utils/dungeons';
 
 export type RIOData = {
   mythic_plus_best_runs: TRunStats;
@@ -12,9 +17,9 @@ function refactorRIOData(data: RIOData) {
     ...data.mythic_plus_alternate_runs,
   ];
   const bestScores = {
-    scores: {} as TInitialObj,
-    keyLevels: {} as TInitialObj,
-    timestamps: {} as TInitialObj,
+    scores: getInitialSliceObject(0),
+    keyLevels: getInitialSliceObject(0),
+    timestamps: getInitialSliceObject(dungeonMaxTimestamp),
   };
 
   bestRuns.forEach((i) => {

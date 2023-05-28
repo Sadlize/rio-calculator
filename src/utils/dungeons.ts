@@ -21,7 +21,8 @@ export const dungeonMaxTimestamp = {
   ULD: 2100999,
 };
 
-export type TDungeonKeys = keyof typeof dungeonMaxTimestamp;
+export type TDungeonObj = typeof dungeonMaxTimestamp;
+export type TDungeonKeys = keyof TDungeonObj;
 export type TDungeonWeeks = 'Tyrannical' | 'Fortified';
 
 export type TDungeonCard = {

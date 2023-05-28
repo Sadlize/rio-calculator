@@ -1,6 +1,7 @@
 import {
   dungeonMaxTimestamp,
   TDungeonKeys,
+  TDungeonObj,
   TDungeonWeeks,
 } from 'utils/dungeons';
 
@@ -28,19 +29,16 @@ export type TInitialObj = {
   [dungeon in TDungeonKeys]: { [week in TDungeonWeeks]: number };
 };
 
-export function getInitialSliceObject(value: number | object): TInitialObj {
-  return Object.keys(dungeonMaxTimestamp).reduce(
+export function getInitialSliceObject(
+  value: number | TDungeonObj,
+): TInitialObj {
+  const type = typeof value === 'object';
+  return Object.keys(type ? value : dungeonMaxTimestamp).reduce(
     (acc, dungeon) => ({
       ...acc,
       [dungeon]: {
-        Tyrannical:
-          typeof value === 'object'
-            ? dungeonMaxTimestamp[dungeon as TDungeonKeys]
-            : value,
-        Fortified:
-          typeof value === 'object'
-            ? dungeonMaxTimestamp[dungeon as TDungeonKeys]
-            : value,
+        Tyrannical: type ? value[dungeon as TDungeonKeys] : value,
+        Fortified: type ? value[dungeon as TDungeonKeys] : value,
       },
     }),
     {} as TInitialObj,

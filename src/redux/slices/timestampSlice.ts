@@ -7,7 +7,7 @@ import {
   TPayloadValue,
 } from 'redux/slices/index';
 
-const initialObj = getInitialSliceObject({});
+const initialObj = getInitialSliceObject(dungeonMaxTimestamp);
 
 const timestampSlice = createSlice({
   name: 'timestamp',
